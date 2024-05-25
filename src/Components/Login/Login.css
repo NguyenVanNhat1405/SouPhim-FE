@@ -9,7 +9,7 @@
     border: none;
     font-size: 20px;
     cursor: pointer;
-    z-index: 1001; /* Đảm bảo nút hiển thị trên cùng */
+    z-index: 1050; /* Đảm bảo nút hiển thị trên cùng */
 }
 
 .close-btn:hover {
@@ -230,6 +230,8 @@
 .container.active .toggle-right{
     transform: translateX(200%);
 }                                          
+/* Existing CSS */
+
 .login {
     position: fixed;
     top: 0;
@@ -240,26 +242,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
-     /* visibility: hidden;  */
-    /* opacity: 0; */
-    transition: visibility 0s, opacity 0.5s;
+    z-index: 1000;
   }
   
-  /* .login .container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    padding-left: 50px;
-    justify-content: center;
-    align-items: center;
-  
+  .container {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    position: relative;
   }
-   .login .container.active {
-    visibility: visible;
-    opacity: 1;
-  }  */
   
-  /* .hidden {
-    display: none;
-  } 
-   */
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  

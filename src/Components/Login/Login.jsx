@@ -9,7 +9,9 @@ function Login({ onClose }) {
 
   const handleClose = () => {
     setIsActive(false);
-    onClose(); // Gọi hàm onClose được truyền từ component cha để đóng form
+    if (onClose) {
+      onClose(); // Gọi hàm onClose được truyền từ component cha để đóng form
+    }
   };
 
   return (
@@ -20,8 +22,8 @@ function Login({ onClose }) {
           <form>
             <h1>Tạo tài khoản nào!!</h1>
             <div className="social-icons">
-              <a href="google.com/" className="icon"><i className="fa-brands fa-google-plus-g"><img src={gg} alt="" /></i></a>
-              <a href="facebook.com/" className="icon"><i className="fa-brands fa-facebook-f"><img src={facebook} alt="" /></i></a>
+              <a href="https://google.com/" className="icon"><i className="fa-brands fa-google-plus-g"><img src={gg} alt="" /></i></a>
+              <a href="https://facebook.com/" className="icon"><i className="fa-brands fa-facebook-f"><img src={facebook} alt="" /></i></a>
             </div>
             <span>hoặc sử dụng Email để đăng ký</span>
             <input type="text" placeholder="Tên" />
@@ -34,8 +36,8 @@ function Login({ onClose }) {
           <form>
             <h1>Đăng nhập nào!!</h1>
             <div className="social-icons">
-              <a href="google.com/" className="icon"><i className="fa-brands fa-google-plus-g"><img src={gg} alt="" /></i></a>
-              <a href="facebook.com/" className="icon"><i className="fa-brands fa-facebook-f"><img src={facebook} alt="" /></i></a>
+              <a href="https://google.com/" className="icon"><i className="fa-brands fa-google-plus-g"><img src={gg} alt="" /></i></a>
+              <a href="https://facebook.com/" className="icon"><i className="fa-brands fa-facebook-f"><img src={facebook} alt="" /></i></a>
             </div>
             <span>hoặc Email và mật khẩu đã tạo</span>
             <input type="email" placeholder="Email" />

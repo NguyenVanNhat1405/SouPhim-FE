@@ -1,19 +1,52 @@
-.item{
-    width: 250px;
-}
-.item img{
-    width: 250px;
-}
-.item p{
+/* Item.css */
+.card {
+    position: relative;
+    width: 220px;
+    height: 320px;
     display: flex;
+    align-items: center;
     justify-content: center;
-    margin: 6px 0px;
-    font-size: 20px;
-    font-weight: 500;
-}
-
-
-.item:hover{
-    transform: scale(1.05);
-    transition: 0.6s;
-}
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    overflow: hidden; /* Ẩn bất kỳ nội dung nào vượt ra khỏi phần tử */
+    z-index: 2000;
+  }
+  
+  /* Tạo hiệu ứng background-image khi hover */
+  .card:hover .card-image {
+    transform: scale(1.1);
+  }
+  
+  .card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease; /* Hiệu ứng scale khi hover */
+  }
+  
+  .card p {
+    position: absolute;
+    bottom: 20px; /* Đặt vị trí nội dung */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white; /* Màu chữ */
+    background-color: rgba(0, 0, 0, 0.5); /* Màu nền với độ trong suốt */
+    padding: 10px 20px; /* Khoảng cách nội dung */
+    border-radius: 10px; /* Bo tròn góc */
+    white-space: nowrap; /* Ngăn chặn text wrap */
+    opacity: 0; /* Ẩn nội dung ban đầu */
+    transition: opacity 0.3s ease, font-size 0.3s ease; /* Hiệu ứng hiển thị nội dung và thay đổi kích thước font */
+    font-size: 20px; /* Kích thước font ban đầu */
+  }
+  
+  .card:hover p {
+    opacity: 1; /* Hiển thị nội dung khi hover */
+    font-size: 15px; /* Kích thước font khi hover */
+  }
+  

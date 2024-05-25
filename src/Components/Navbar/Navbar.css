@@ -1,10 +1,9 @@
 
 nav{
-  height: 4.5rem;
+  height: 60px;
   background-color: #564e4e;
   box-shadow: 0 3px 20px rgba(232, 215, 215, 0.2);
   display: flex;  
-  position: fixed;
   z-index: 1000;
   top: 0;
   left: 0;
@@ -185,4 +184,40 @@ ul{
 }
 .toggle .line3{
   transform: rotate(45deg) translate(-5px,-6px);
+}
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 200px;
+  z-index: 5000;
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown ul li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown ul li:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown ul li a:hover {
+  color: #555;
 }

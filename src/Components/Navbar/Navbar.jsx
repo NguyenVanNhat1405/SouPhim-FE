@@ -2,23 +2,15 @@ import React, { useState } from 'react';
 import './Navbar.css'; // Import CSS file
 import { Link } from 'react-router-dom';
 import login from '../Assets/dropdown.png';
-import Login from '../Login/Login';
 import Search from '../Search/Search';
+import Category from '../Category/Category';
 
-function Navbar() {
+function Navbar({ showLogin, closeLogin }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoginVisible, setIsLoginVisible] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-  };
-
-  const toggleLogin = () => {
-    setIsLoginVisible(!isLoginVisible);
-  };
-
-  const closeLogin = () => {
-    setIsLoginVisible(false);
   };
 
   return (
@@ -27,26 +19,48 @@ function Navbar() {
         <div className="logo">
           <span>Souphim</span>
         </div>
-        <div className={`hamburger ${isOpen ? 'toggle' : ''}`} onClick={toggleMenu}>
-          <div className="line1"></div>
-          <div className="line2"></div>
-          <div className="line3"></div>
+        <div className='hamburger' onClick={toggleMenu}>
+          <Category />
         </div>
         <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
           <li><Search /></li>
-          <li><Link to="/"><a>Home</a></Link></li>
-          <li><Link to="/theloai"><a>Thể loại</a></Link></li>
-          <li><Link to="/quocgia"><a>Quốc gia</a></Link></li>
-          <li><Link to="/chieurap"><a>Phim chiếu rạp</a></Link></li>
-          <li><Link to="/phimbo"><a>Phim bộ</a></Link></li>
+          <li><Link to="/">Home</Link></li>
+          <li><li
+            onMouseEnter={() => setShowDropdown(true)}
+            onMouseLeave={() => setShowDropdown(false)}
+          >
+            <Link to="/quocgia">Thể loại</Link>
+            {showDropdown && (
+              // Đây là nơi để hiển thị bảng chọn
+              <div>
+                {showDropdown && (
+                  <div className="dropdown">
+                    <ul>
+                      <li><Link to="/theloai/action">Hành động</Link></li>
+                      <li><Link to="/theloai/comedy">Hài kịch</Link></li>
+                      <li><Link to="/theloai/drama">Kịch tính</Link></li>
+                      <li><Link to="/theloai/drama">Viễn tưởng</Link></li>
+                      <li><Link to="/theloai/drama">Ngôn tình</Link></li>
+                      <li><Link to="/theloai/drama">Đam mỹ</Link></li>
+                      <li><Link to="/theloai/drama">Kinh dị</Link></li>
+                    </ul>
+                  </div>
+                )}
+
+              </div>
+            )}
+          </li>
+          </li>
+          <li><Link to="/quocgia">Quốc gia</Link> </li>
+          <li><Link to="/chieurap">Phim chiếu rạp</Link></li>
+          <li><Link to="/phimbo">Phim bộ</Link></li>
           <li>
-            <a onClick={toggleLogin} style={{ cursor: 'pointer' }}>
+            <a onClick={showLogin} style={{ cursor: 'pointer' }}>
               <img src={login} alt="login" />
             </a>
           </li>
         </ul>
       </nav>
-      {isLoginVisible && <Login onClose={closeLogin} />}
     </div>
   );
 }
