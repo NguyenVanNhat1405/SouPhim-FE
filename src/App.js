@@ -1,4 +1,3 @@
-import './App.css';
 import React, { useState } from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -25,10 +24,12 @@ function App() {
         {isLoginVisible && <Login onClose={closeLogin} />}
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/korea" element={<Category banner={korea_banner} category="korea" />} />
-          <Route path="/china" element={<Category banner={korea_banner} category="china" />} />
-          <Route path="/vietnam" element={<Category banner={korea_banner} category="vietnam" />} />
-          <Route path="/thai" element={<Category banner={korea_banner} category="thai" />} />
+          <Route path="/quocgia/korea" element={<Category banner={korea_banner} quocgia="korea" />} />
+          <Route path="/quocgia/china" element={<Category banner={korea_banner} quocgia="china" />} />
+          <Route path="/quocgia/viet" element={<Category banner={korea_banner} quocgia="viet" />} />
+          <Route path="/quocgia/thai" element={<Category banner={korea_banner} quocgia="thai" />} />
+          <Route path="/chieurap" element={<Home />} />
+          <Route path="/phimbo" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>

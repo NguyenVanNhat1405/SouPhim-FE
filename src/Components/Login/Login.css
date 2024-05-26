@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-
 .close-btn {
     position: absolute;
     top: 10px;
@@ -14,8 +13,9 @@
 
 .close-btn:hover {
     color: white; 
-  } 
-.container{
+}
+
+.container {
     background-color: #fff;
     border-radius: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
@@ -26,10 +26,9 @@
     min-height: 480px;
     color: #333;
     z-index: 9999; /* Thay đổi z-index */
-
 }
 
-.container p{
+.container p {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.3px;
@@ -38,30 +37,30 @@
     color: #333;
 }
 
-.container span{
+.container span {
     font-size: 12px;
     color: #333;
 }
-.container h1{
-  color: #333;
-  font-size: 20px;
-  font-weight: 14;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  margin: 20px 20px;
-  padding-left: 20px;
-  
+
+.container h1 {
+    color: #333;
+    font-size: 20px;
+    font-weight: 14;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: 20px 20px;
+    padding-left: 20px;
 }
 
-.container a{
+.container a {
     color: #333;
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;
 }
 
-.container button{
+.container button {
     background-color: #1cacea;
     color: #333;
     font-size: 12px;
@@ -75,12 +74,12 @@
     cursor: pointer;
 }
 
-.container button .hidden{
+.container button.hidden {
     background-color: transparent;
     border-color: #fff;
 }
 
-.container form{
+.container form {
     background-color: #fff;
     display: flex;
     align-items: center;
@@ -91,7 +90,7 @@
     color: #333;
 }
 
-.container input{
+.container input {
     background-color: #d4f5f8;
     color: #333;
     border: none;
@@ -103,56 +102,57 @@
     outline: none;
 }
 
-.form-container{
+.form-container {
     position: absolute;
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
 }
 
-.sign-in{
+.sign-in {
     left: 0;
     width: 50%;
     z-index: 2;
 }
 
-.container.active .sign-in{
+.container.active .sign-in {
     transform: translateX(100%);
 }
 
-.sign-up{
+.sign-up {
     left: 0;
     width: 50%;
     opacity: 0;
     z-index: 1;
 }
 
-
-.container.active .sign-up{
+.container.active .sign-up {
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
     animation: move 0.6s;
 }
 
-@keyframes move{
-    0%, 49.99%{
+@keyframes move {
+    0%, 49.99% {
         opacity: 0;
         z-index: 1;
     }
-    50%, 100%{
+    50%, 100% {
         opacity: 1;
         z-index: 5;
     }
 }
-.social-icons img{
-  width: 30px;
+
+.social-icons img {
+    width: 30px;
 }
-.social-icons{
+
+.social-icons {
     margin: 10px 0;
 }
 
-.social-icons a{
+.social-icons a {
     border: 1px solid #7deef8;
     border-radius: 20%;
     display: inline-flex;
@@ -163,7 +163,7 @@
     height: 35px;
 }
 
-.toggle-container{
+.toggle-container {
     position: absolute;
     top: 0;
     left: 50%;
@@ -175,12 +175,12 @@
     z-index: 1000;
 }
 
-.container.active .toggle-container{
+.container.active .toggle-container {
     transform: translateX(-100%);
     border-radius: 0 150px 100px 0;
 }
 
-.toggle{
+.toggle {
     background-color: #1cacea;
     height: 100%;
     background: linear-gradient(to right, #7deef8, #1cacea);
@@ -191,15 +191,16 @@
     width: 200%;
     transform: translateX(0);
     transition: all 0.6s ease-in-out;
-    justify-content: center;
-    align-items: center;
+    display: flex; /* Thêm display flex để căn giữa */
+    justify-content: center; /* Thêm justify-content để căn giữa */
+    align-items: center; /* Thêm align-items để căn giữa */
 }
 
-.container.active .toggle{
+.container.active .toggle {
     transform: translateX(50%);
 }
 
-.toggle-panel{
+.toggle-panel {
     position: absolute;
     width: 50%;
     height: 100%;
@@ -214,23 +215,23 @@
     transition: all 0.6s ease-in-out;
 }
 
-.toggle-left{
+.toggle-left {
     transform: translateX(-200%);
 }
 
-.container.active .toggle-left{
+.container.active .toggle-left {
+    left: 0;
     transform: translateX(0);
 }
 
-.toggle-right{
+.toggle-right {
     right: 0;
     transform: translateX(0);
 }
 
-.container.active .toggle-right{
+.container.active .toggle-right {
     transform: translateX(200%);
-}                                          
-/* Existing CSS */
+}
 
 .login {
     position: fixed;
@@ -243,16 +244,16 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-  }
-  
-  .container {
+}
+
+.container {
     background: white;
     padding: 2rem;
     border-radius: 8px;
     position: relative;
-  }
-  
-  .close-btn {
+}
+
+.close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -260,5 +261,4 @@
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-  }
-  
+}

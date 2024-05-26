@@ -42,7 +42,7 @@ function Login({ onClose }) {
             <span>hoặc Email và mật khẩu đã tạo</span>
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Mật khẩu" />
-            <a href="">Ban quên mật khẩu?</a>
+            <a href="/">Ban quên mật khẩu?</a>
             <Link to="/"><button type="button">Đăng Nhập</button></Link>
           </form>
         </div>

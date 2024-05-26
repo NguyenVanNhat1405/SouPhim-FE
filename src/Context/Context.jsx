@@ -1,52 +1,25 @@
-import { useState } from "react";
-import React,{createContext} from "react";
-import all_books from "../Components/Assets/all_books"
+import React, { createContext } from "react";
+import all_img from "../Components/Assets/all_img.js";
 
-export const Context = createContext(null)
+export const Context = createContext([]);
 
-const getDefaultCart =()=>{
-    let cart ={};
-    for (let index =0; index < all_books.length+1; index++)
-    {cart[index] = 0;}
-    return cart;
-}
+const ContextProvider = (props) => {
+  // Xử lý dữ liệu trước khi cung cấp cho createContext
+  const processedData = processImageData(all_img);
 
-const ContextProvider = (props)=>{
-    
-    const [cartItems, setCartItems]= useState(getDefaultCart());
-    const addToCart =(itemId)=>{
-        setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
-    }
-    const removeFromCart =(itemId)=>{
-        setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
-    }
-    const getTotalCartAmount=()=>{
-        let totalAmount=0;
-        for(const item in cartItems)
-        {
-            if(cartItems[item]>0)
-            {
-                let itemInfo = all_books.find((book)=>book.id===Number(item))
-                totalAmount += itemInfo.price * cartItems[item];
-            }
-        } return totalAmount;
-    }
-    const getTotalCartItems =()=>{
-        let totalItems=0;
-        for(const item in cartItems)
-        {
-            if(cartItems[item]>0)
-            {
-                totalItems += cartItems[item];
-            }
-        } return totalItems;
-    }
-    const contextValue = {getTotalCartItems,getTotalCartAmount, all_books,cartItems, addToCart, removeFromCart}
-   
-    return (
-        <Context.Provider value={contextValue}>
-            {props.children}
-        </Context.Provider>
-    )
-}
+  return (
+    <Context.Provider value={processedData}>
+      {props.children}
+    </Context.Provider>
+  );
+};
+
+// Hàm xử lý dữ liệu hình ảnh trước khi cung cấp cho createContext
+const processImageData = (data) => {
+  // Xử lý dữ liệu ở đây nếu cần thiết
+  // Ví dụ: kiểm tra tính đồng nhất của dữ liệu, xử lý lỗi, ...
+
+  return data;
+};
+
 export default ContextProvider;

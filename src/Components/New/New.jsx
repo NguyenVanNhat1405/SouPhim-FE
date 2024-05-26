@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import './New.css';
 import '../Login/Login.css';
 import Item from '../Item/Item.jsx';
-import new_videos from '../Assets/newbooks.js';
+import new_videos from '../Assets/newphim.js';
 import Login from '../Login/Login.jsx';
 
 const New = () => {
@@ -26,6 +26,7 @@ const New = () => {
               id={item.id}
               name={item.name}
               image={item.image}
+              tap={item.tap}
             />
           ))}
         </div>

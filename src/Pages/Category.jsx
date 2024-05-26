@@ -1,47 +1,33 @@
-import React, { useEffect, useState  } from 'react'
-import './CSS/Category.css'
-import  dropdown  from '../Components/Assets/dropdown.png'
+import React from 'react';
+import './CSS/Category.css';
+// import { Context } from '../Context/Context';
 import Item from '../Components/Item/Item';
+import all_img from "../Components/Assets/all_img.js";
 const Category = (props) => {
-  const [all_videos, setAllvideos] = useState([]);
-  // Hàm để lấy dữ liệu từ server
-  const fetchInfo = async () => {
-    await fetch('http://localhost:3000/book/getall')
-      .then((res) => res.json())
-      .then((data) => { setAllvideos(data) })
-  }
+  // const all_img = useContext(Context);
 
-  // Sử dụng useEffect để gọi hàm fetchBooks khi component được mount
-  useEffect(() => {
-    fetchInfo();
-  }, []);
+  // Kiểm tra xem all_img đã được khởi tạo và có dữ liệu không
 
 
   return (
-    <div className='category-video'>
-      <img className='category-banner' src={props.banner} alt=''/>
-      <div className='category-Indexvideo'>
-        <p>
-          <span>Showing 1-12</span> out of 14 book
-        </p>
-        <div className='category-sort'>
-          Sort by <img src={dropdown} alt=''/>
-        </div>
+    <div className='category-img'>
+      <div className='category-title'>
+        <h1>{props.til}</h1>
       </div>
-      <div className='category-allvideo'>
-        {all_videos.map((item, i) => {
-          if (props.category === item.category) {
-            return <Item key={i} id={item.id} name={item.name} image={item.image}/>;
+      <div className='category-Indeximg'>
+      </div>
+      <div className='category'>
+        {all_img.map((item, i) => {
+          // Kiểm tra xem quốc gia của item có trùng với quốc gia truyền vào không
+          if (props.quocgia === item.quocgia) {
+            return <Item key={i} id={item.id} name={item.name} image={item.image} tap={item.tap} />;
           } else {
             return null;
           }
         })}
       </div>
-      <div className='category-more'>
-        Explore More
-      </div>
     </div>
   );
-}
+};
 
-export default Category
+export default Category;
