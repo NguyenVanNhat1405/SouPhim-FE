@@ -1,0 +1,30 @@
+.background {
+  background: linear-gradient(180deg, #817b82 0%, rgb(7, 7, 7) 60%);
+    padding: 20px;  
+    top: 100px;
+  }
+  
+  .background h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .background .review-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .background .review-content img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .background .error-message {
+    font-size: 18px;
+    color: red;
+  }
+  

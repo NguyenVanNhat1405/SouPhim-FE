@@ -1,25 +1,21 @@
-import React, { createContext } from "react";
-import all_img from "../Components/Assets/all_img.js";
+import {  createContext } from "react";
+import all_img from "../Components/Assets/all_img";
 
-export const Context = createContext([]);
+export const Context = createContext(null);
+
 
 const ContextProvider = (props) => {
-  // Xử lý dữ liệu trước khi cung cấp cho createContext
-  const processedData = processImageData(all_img);
+   
 
-  return (
-    <Context.Provider value={processedData}>
-      {props.children}
-    </Context.Provider>
-  );
-};
+    const contextValue = {
+        all_img,
+    };
 
-// Hàm xử lý dữ liệu hình ảnh trước khi cung cấp cho createContext
-const processImageData = (data) => {
-  // Xử lý dữ liệu ở đây nếu cần thiết
-  // Ví dụ: kiểm tra tính đồng nhất của dữ liệu, xử lý lỗi, ...
-
-  return data;
+    return (
+        <Context.Provider value={contextValue}>
+            {props.children}
+        </Context.Provider>
+    );
 };
 
 export default ContextProvider;

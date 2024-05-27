@@ -2,24 +2,25 @@
 .new-video {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 100%; /* Tự động mở rộng theo nội dung */
-    gap: 30px;
+    gap: 10px;
     background: linear-gradient(180deg, #817b82 0%, rgb(7, 7, 7) 60%);
-    padding-top: 30px; /* Thêm padding để tạo khoảng cách với thanh nav */
+     /* Thêm padding để tạo khoảng cách với thanh nav */
    /* Khoảng cách giữa phần tử này và thanh nav */
-    position: absolute; /* Đảm bảo phần tử này định vị tương đối */
-    
+   padding-top: 40px;
+    position: relative; /* Đảm bảo phần tử này định vị tương đối */
+    padding-bottom: 10px;
+    height:90vh;
   }
   
   .new-video h1 {
     color: white;
     font-size: 40px;
     font-weight: 600;
-    margin-top: 0; /* Loại bỏ khoảng cách trên cùng */
+    margin-top: 10px; /* Loại bỏ khoảng cách trên cùng */
     position: absolute; /* Đảm bảo phần tử này định vị tuyệt đối */
-    top: 20px; /* Điều chỉnh vị trí so với phần tử cha */
+    top: 10px; /* Điều chỉnh vị trí so với phần tử cha */
     left: 50%; /* Đưa phần tử này vào giữa */
     transform: translateX(-50%); /* Đưa phần tử này vào giữa */
     z-index: 1; /* Đảm bảo hiển thị trên thanh nav */
@@ -29,8 +30,8 @@
     justify-content: center;
     display: grid;
     grid-template-columns: 1.2fr 1.2fr 1.2fr 1.2fr;
-    gap: 50px;
-    padding-top: 30px;
+    gap: 10px;
+    padding-top: 10px;
     width: 100%; /* Mở rộng hết khung chứa */
     max-width: 1200px;
     margin-top: 30px; /* Khoảng cách từ tiêu đề xuống danh sách video */

@@ -25,20 +25,21 @@ const Item = (props) => {
       }
     );
 
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
+    const currentCardRef = cardRef.current; // Lưu trữ giá trị của cardRef.current trong một biến khác
+    if (currentCardRef) {
+      observer.observe(currentCardRef);
     }
 
     return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
+      if (currentCardRef) {
+        observer.unobserve(currentCardRef);
       }
     };
   }, []);
 
   return (
     <div className='card' ref={cardRef}>
-      <Link to={`/video/${props.id}`} onClick={scrollToTop}>
+      <Link to={`/review/${props.id}`} onClick={scrollToTop}>
         <div className="card-image" style={{ backgroundImage: `url(${props.image})` }}></div>
         <div className="top-right">{props.tap}</div>
         <div><p data-content={props.name}>{props.name}</p></div>
@@ -46,5 +47,6 @@ const Item = (props) => {
     </div>
   );
 };
+
 
 export default Item;

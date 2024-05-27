@@ -53,96 +53,120 @@ const all_img =[
         name:"Chàng Hậu",
         image:k1_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
-        quocgia:"korea"
+        theloai:["romance","scrience","drama"],
+        quocgia:"korea",
+        til:"Hàn Quốc",
+        disc:"Phim này",
     },
     {
         id:2,
         name:"Chuông Báo Tình Yêu",
         image:k2_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
+        theloai:["romance","science"],
         quocgia:"korea"
+        ,
+        til:"Hàn Quốc",
+        disc:"Phim này",
     },
     {
         id:3,
         name:"Khách Sạn Ánh Trăng",
         image:k3_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
-        quocgia:"korea"
+        theloai:"romantic,science",
+        quocgia:"korea",
+        til:"Hàn Quốc",
+        disc:"Phim này",
     },
     {
         id:4,
         name:"Yêu Tinh",
         image:k4_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
-        quocgia:"korea"
+        theloai:"drama,horror",
+        quocgia:"korea",
+        til:"Hàn Quốc",
+        disc:"Phim này",
     },
     {
         id:5,
         name:"Cỏng Anh mà chạy",
         image:k5_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
-        quocgia:"korea"
+        theloai:"drama,science",
+        quocgia:"korea",
+        til:"Hàn Quốc",
+        disc:"Phim này",
     },
     {
         id:6,
         name:"Vô Tình Tim Thấy Haru",
         image:k6_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
-        quocgia:"korea"
+        theloai:"romantic,science",
+        quocgia:"korea",
+        til:"Hàn Quốc",
+        disc:"Phim này",
     },
     {
         id:7,
         name:"Hometown Cha Cha Cha",
         image:k7_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
-        quocgia:"korea"
+        theloai:"healing",
+        quocgia:"korea",
+        til:"Hàn Quốc",
+        disc:"Phim này",
     },
     {
         id:8,
         name:"Chào Mừng Đến Với Salmidan",
         image:k8_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
-        quocgia:"korea"
+        theloai:"romantic,science",
+        quocgia:"korea",
+        til:"Hàn Quốc",
+        disc:"Phim này",
     },
     {
         id:9,
         name:"Cô Nàng Mạnh Mẽ Doo Boong Soong",
         image:k9_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
-        quocgia:"korea"
+        theloai:"romantic,science",
+        quocgia:"korea",
+        til:"Hàn Quốc",
+        disc:"Phim này",
     },
     {
         id:10,
         name:"School 2015",
         image:k10_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
-        quocgia:"korea"
+        theloai:"romantic,science",
+        quocgia:"korea",
+        til:"Hàn Quốc",
+        disc:"Phim này",
     },
     {
         id:11,
         name:"Chiến Nào Ma Kia",
         image:k11_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
-        quocgia:"korea"
+        theloai:"romantic,science",
+        quocgia:"korea",
+        til:"Hàn Quốc",
+        disc:"Phim này",
     },
     {
         id:12,
         name:"Nghệ Thuật Săn Quỷ Và Nấu Mì 1",
         image:k12_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
-        quocgia:"korea"
+        theloai:"romantic,science",
+        quocgia:"korea",
+        disc:"Phim này",
     },
 
     {
@@ -150,24 +174,32 @@ const all_img =[
         name:"Liệt Diễm",
         image:c1_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
-        quocgia:"china"
+        theloai:"action",
+        quocgia:"china",
+        til:"Trung Quốc",
+        disc:"Phim này",
     },
     {
         id:14,
         name:"Nhiệt Huyết Cuồng Lam",
         image:c2_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
+        theloai:"romantic,science",
         quocgia:"china"
+        ,
+        til:"Trung Quốc",
+        disc:"Phim này",
     },
     {
         id:15,
         name:"Trấn Hồn",
         image:c3_img,
         tap:"16/16 Tập",
-        theloai:"romantic, science",
+        theloai:"boylove",
         quocgia:"china"
+        ,
+        til:"Trung Quốc",
+        disc:"Phim này",
     },
     {
         id:16,
@@ -253,7 +285,9 @@ const all_img =[
         image:t1_img,
         tap:"16/16 Tập",
         theloai:"romantic, science",
-        quocgia:"thai"
+        quocgia:"thai",
+        til:"Thái Lan",
+        disc:"Phim này",
         
     },
     {
@@ -262,7 +296,8 @@ const all_img =[
         image:t2_img,
         tap:"16/16 Tập",
         theloai:"romantic, science",
-        quocgia:"thai"
+        quocgia:"thai",
+        disc:"Phim này",
         
     },
     {
@@ -298,7 +333,9 @@ const all_img =[
         image:t6_img,
         tap:"16/16 Tập",
         theloai:"romantic, science",
-        quocgia:"thai"
+        quocgia:"thai",
+        
+        disc:"Phim này",
         
     },
     {
@@ -362,7 +399,8 @@ const all_img =[
         tap:"16/16 Tập",
         theloai:"romantic, science",
         quocgia:"viet",
-        til:"Việt Nam"
+        til:"Việt Nam",
+        disc:"Phim này",
     },
     {
         id:38,

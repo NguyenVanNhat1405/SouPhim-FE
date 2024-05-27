@@ -1,0 +1,50 @@
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Ẩn thanh cuộn cho Firefox */
+  }
+  
+  .carousel::-webkit-scrollbar {
+    display: none; /* Ẩn thanh cuộn cho trình duyệt WebKit */
+  }
+  
+  .carousel-item {
+    flex: 0 0 auto;
+    width: 200px; /* Điều chỉnh chiều rộng dựa trên thiết kế của bạn */
+    margin-right: 16px; /* Điều chỉnh khoảng cách giữa các mục */
+  }
+  
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px; /* Tuỳ chọn: bo tròn góc */
+  }
+  
+  .scroll-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+  }
+  
+  .scroll-button.left {
+    left: 0;
+  }
+  
+  .scroll-button.right {
+    right: 0;
+  }
+  

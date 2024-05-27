@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Power BI Report</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/powerbi-client/2.19.1/powerbi.min.js"></script>
+</head>
+<body>
+    <h1>My Power BI Report</h1>
+    <div id="reportContainer" style="height: 800px; width: 100%;"></div>
+    <iframe title="test" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=dc033e0e-c786-41a1-af4d-c5887cc4f534&autoAuth=true&ctid=80a906da-b4ca-4ccb-81c3-d0b567529534" frameborder="0" allowFullScreen="true"></iframe>
+<!-- 
+    <script>
+        // Ensure you replace these values with your actual embed URL and access token
+        var embedUrl = 'https://app.powerbi.com/reportEmbed?reportId=dc033e0e-c786-41a1-af4d-c5887cc4f534&groupId=yourGroupId';
+        var embedToken = 'yourEmbedToken';
+
+        // Embed configuration
+        var embedConfig = {
+            type: 'report',
+            id: 'dc033e0e-c786-41a1-af4d-c5887cc4f534', // Your Report ID
+            embedUrl: embedUrl,
+            accessToken: embedToken,
+            tokenType: window['powerbi-client'].models.TokenType.Embed,
+            settings: {
+                filterPaneEnabled: false,
+                navContentPaneEnabled: false
+            }
+        };
+
+        // Get a reference to the embedded report HTML element
+        var reportContainer = document.getElementById('reportContainer');
+
+        // Embed the report and display it within the div container
+        var report = powerbi.embed(reportContainer, embedConfig);
+
+        // Handle events if needed
+        report.on('loaded', function() {
+            console.log('Report loaded successfully');
+        });
+
+        report.on('rendered', function() {
+            console.log('Report rendered successfully');
+        });
+
+        report.on('error', function(event) {
+            console.error('Error occurred: ', event.detail);
+        });
+    </script> -->
+</body>
+</html>
