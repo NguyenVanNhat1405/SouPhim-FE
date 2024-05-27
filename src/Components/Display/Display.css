@@ -3,10 +3,21 @@
     flex-direction: column;
     margin-left: 150px;
     margin-right: 150px;
-    background:linear-gradient(180deg, #817b82 0%, rgb(7, 7, 7) 60%);
-    border-radius: 20px;
-    border: 1px  solid none;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    
+}
+.display-gird{
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    padding: 20px;
+}
+.display-left{
+    padding-left: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 .tille{
     display: flex;
@@ -16,33 +27,66 @@
 }
 
 
-.display-main-img{
-    padding-left: 10px;
-    width: 180px;
-    height: 280px;
-    object-fit: cover;
-}
+
 .display-right{
+    padding-left: 100px;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
+    
 }
 .display-right h1{
     color: black;
     font-size: 25px;
     font-weight: 700;
 }
-.display-right-star{
+
+.display-right-desc{
     display: flex;
+    margin: 10px 0px;
     gap: 5px;
-    align-items: center;
-    margin-top: 13px;
-    color: #1c1c1c;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 500;
 }
-
-
-.display-right button:hover{
-    transform: scale(1.1);
-    background-color: #6096B4;
+.display-right-actor{
+    display: flex;
+    margin: 10px 0px;
+    gap: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.display-right-director{
+    display: flex;
+    margin: 10px 0px;
+    gap: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.display-right-tap{
+    display: flex;
+    margin: 10px 0px;
+    gap: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.display-right-nam{
+    display: flex;
+    margin: 10px 0px;
+    gap: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.display-right-quocgia{
+    display: flex;
+    margin: 10px 0px;
+    gap: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+.display-right-theloai{
+    display: flex;
+    margin: 10px 0px;
+    gap: 5px;
+    font-size: 20px;
+    font-weight: 500;
 }

@@ -44,17 +44,17 @@ function App() {
         <Routes>
           
           <Route path="/" element={<Home />} />
-          <Route path='/theloai/action' element={<Theloai theloai="action"/>}/>
-          <Route path='/theloai/drama' element={<Theloai theloai="drama"/>}/>
-          <Route path='/theloai/horror' element={<Theloai theloai="horror"/>}/>
-          <Route path='/theloai/romance' element={<Theloai theloai="romance"/>}/>
-          <Route path='/theloai/scrience' element={<Theloai theloai="scrience"/>}/>
-          <Route path='/theloai/healing' element={<Theloai theloai="healing"/>}/>
-          <Route path='/theloai/boylove' element={<Theloai theloai="boylove"/>}/>
-          <Route path="/quocgia/korea" element={<Category banner={korea_banner} quocgia="korea" />} />
-          <Route path="/quocgia/china" element={<Category banner={korea_banner} quocgia="china" />} />
-          <Route path="/quocgia/viet" element={<Category banner={korea_banner} quocgia="viet" />} />
-          <Route path="/quocgia/thai" element={<Category banner={korea_banner} quocgia="thai" />} />
+          <Route path='/theloai/action' element={<Theloai theloai="Hành Động"/>}/>
+          <Route path='/theloai/drama' element={<Theloai theloai="Kịch Tính"/>}/>
+          <Route path='/theloai/horror' element={<Theloai theloai="Kinh Dị"/>}/>
+          <Route path='/theloai/romance' element={<Theloai theloai="Lãng Mạng"/>}/>
+          <Route path='/theloai/scrience' element={<Theloai theloai="Viễn Tưởng"/>}/>
+          <Route path='/theloai/healing' element={<Theloai theloai="Chữa Lành"/>}/>
+          <Route path='/theloai/boylove' element={<Theloai theloai="Đam Mỹ"/>}/>
+          <Route path="/quocgia/korea" element={<Category banner={korea_banner} quocgia="Hàn Quốc" />} />
+          <Route path="/quocgia/china" element={<Category banner={korea_banner} quocgia="Trung Quốc" />} />
+          <Route path="/quocgia/viet" element={<Category banner={korea_banner} quocgia="Việt Nam" />} />
+          <Route path="/quocgia/thai" element={<Category banner={korea_banner} quocgia="Thái Lan" />} />
           <Route path="/chieurap" element={<Home />} />
           <Route path="/phimbo" element={<Home />} />
           <Route path='/review/:imgId' element={<Review/>}>
