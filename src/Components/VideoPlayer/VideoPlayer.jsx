@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import './VideoPlayer.css';
 
 const VideoPlayer = ({ videoSrc, title, description }) => {
@@ -27,8 +29,12 @@ const VideoPlayer = ({ videoSrc, title, description }) => {
           <button onClick={handlePlayPause}>
             {isPlaying ? 'Pause' : 'Play'}
           </button>
-          <button onClick={toggleFocus}>
-            {isFocused ? 'Exit Focus Mode' : 'Focus Mode'}
+          <button onClick={toggleFocus} className="focus-toggle">
+            <FontAwesomeIcon
+              icon={isFocused ? faSun : faMoon}
+              size="2x"
+              className={`icon ${isFocused ? 'sun-icon' : 'moon-icon'}`}
+            />
           </button>
         </div>
       </div>
