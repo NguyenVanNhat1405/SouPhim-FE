@@ -1,4 +1,5 @@
-/* .home{
+.home{
     display: grid;
     grid-template-columns: 5fr 1fr;
-} */
+    background: linear-gradient(180deg, #817b82 0%, rgb(7, 7, 7) 50%);
+    }

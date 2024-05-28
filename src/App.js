@@ -12,6 +12,7 @@ import image2 from './Components/Assets/banner/2.png';
 import image3 from './Components/Assets/banner/3.png';
 import Theloai from './Pages/Theloai';
 import Review from './Pages/Review';
+import Form from './Components/Form/Form';
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -23,7 +24,6 @@ function ScrollToTop() {
 
 function App() {
   const [isLoginVisible, setIsLoginVisible] = useState(false);
-
   const showLogin = () => {
     setIsLoginVisible(true);
   };
@@ -31,14 +31,14 @@ function App() {
   const closeLogin = () => {
     setIsLoginVisible(false);
   };
-
+  
   const images = [image1, image2, image3]; // Moved images declaration here
 
   return (
     <div>
       <BrowserRouter>
         <ScrollToTop />
-        <Navbar showLogin={showLogin} closeLogin={closeLogin} />
+        <Navbar showLogin={showLogin} closeLogin={closeLogin}/>
         {isLoginVisible && <Login onClose={closeLogin} />}
         <Banner images={images}></Banner> {/* Passing images to Banner component */}
         <Routes>
@@ -58,9 +58,8 @@ function App() {
           <Route path="/chieurap" element={<Home />} />
           <Route path="/phimbo" element={<Home />} />
           <Route path='/review/:imgId' element={<Review/>}>
-  
           </Route>
-          
+          <Route path='/thongtin' element={<Form/>}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

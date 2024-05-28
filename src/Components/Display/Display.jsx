@@ -1,5 +1,6 @@
 import React from 'react'
 import './Display.css'
+import Rating from '../Rating/Rating';
 const Display = (props) => {
     const { img } = props;
     return (
@@ -15,6 +16,9 @@ const Display = (props) => {
                 </div>
             </div>
             <div className='display-right'>
+                <div>
+                    <Rating></Rating>
+                </div>
                 <div className='display-right-desc'>
                     Mô Tả: {img.desc}
                 </div>

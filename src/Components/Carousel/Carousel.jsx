@@ -1,31 +1,28 @@
-import React, { useContext, useRef } from 'react';
-import { Context } from '../../Context/Context'; // Đảm bảo rằng đường dẫn đến Context là chính xác
+import React, { useRef } from 'react';
 import './Carousel.css';
+import Item from '../Item/Item';
+import hot_img from '../Assets/newphim';
 
 const Carousel = () => {
-  const { all_img } = useContext(Context); // Lấy dữ liệu từ Context
   const carouselRef = useRef(null);
-
-  const scroll = (direction) => {
-    const { current } = carouselRef;
-    if (direction === 'left') {
-      current.scrollLeft -= current.offsetWidth;
-    } else {
-      current.scrollLeft += current.offsetWidth;
-    }
-  };
 
   return (
     <div className="carousel-container">
-      <button className="scroll-button left" onClick={() => scroll('left')}>‹</button>
+      <div>
+        <h1>Phim Hot</h1>
+      </div>
       <div className="carousel" ref={carouselRef}>
-        {all_img.map((img, index) => (
+        {hot_img.map((item, index) => (
           <div className="carousel-item" key={index}>
-            <img src={img.image} alt={`Carousel item ${index + 1}`} />
+            <Item
+              id={item.id}
+              name={item.name}
+              image={item.image}
+              tap={item.tap}
+            />
           </div>
         ))}
       </div>
-      <button className="scroll-button right" onClick={() => scroll('right')}>›</button>
     </div>
   );
 };

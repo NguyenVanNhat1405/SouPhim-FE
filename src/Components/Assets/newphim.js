@@ -8,7 +8,7 @@ import b7_img from '../Assets/korea/11.jpg';
 import b8_img from '../Assets/korea/12.jpg';
 let data_img =[
     {
-        id:1,
+        id:6,
         name:"Cỏng Anh Mà Chạy",
         image:b1_img,
         tap:"16/16 Tập",

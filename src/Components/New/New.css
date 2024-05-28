@@ -5,10 +5,10 @@
     align-items: center;
     width: 100%; /* Tự động mở rộng theo nội dung */
     gap: 10px;
-    background: linear-gradient(180deg, #817b82 0%, rgb(7, 7, 7) 60%);
      /* Thêm padding để tạo khoảng cách với thanh nav */
    /* Khoảng cách giữa phần tử này và thanh nav */
-   padding-top: 40px;
+   margin-left: 30px;
+   padding: 40px 20px;
     position: relative; /* Đảm bảo phần tử này định vị tương đối */
     padding-bottom: 10px;
     height:90vh;
