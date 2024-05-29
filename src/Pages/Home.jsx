@@ -1,11 +1,11 @@
 import React from 'react'
 import New from '../Components/New/New'
-import "./CSS/Home.css"
+import style from "./CSS/Home.module.css"
 import Carousel from '../Components/Carousel/Carousel'
 
 const Home = () => {
   return (
-    <div className='home'>
+    <div className={style.home}>
       <New/>
       <Carousel />
     </div>

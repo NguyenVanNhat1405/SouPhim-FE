@@ -1,5 +1,5 @@
 /* New.css */
-.new-video {
+.newVideo {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,7 +14,7 @@
     height:90vh;
   }
   
-  .new-video h1 {
+  .newVideo h1 {
     color: white;
     font-size: 40px;
     font-weight: 600;

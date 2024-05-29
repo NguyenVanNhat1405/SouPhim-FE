@@ -1,6 +1,8 @@
+/* Login.module.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-.close-btn {
+.closeBtn {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -11,7 +13,7 @@
     z-index: 1050; /* Đảm bảo nút hiển thị trên cùng */
 }
 
-.close-btn:hover {
+.closeBtn:hover {
     color: white; 
 }
 
@@ -102,31 +104,31 @@
     outline: none;
 }
 
-.form-container {
+.formContainer {
     position: absolute;
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
 }
 
-.sign-in {
+.signIn {
     left: 0;
     width: 50%;
     z-index: 2;
 }
 
-.container.active .sign-in {
+.container.active .signIn {
     transform: translateX(100%);
 }
 
-.sign-up {
+.signUp {
     left: 0;
     width: 50%;
     opacity: 0;
     z-index: 1;
 }
 
-.container.active .sign-up {
+.container.active .signUp {
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
@@ -144,15 +146,15 @@
     }
 }
 
-.social-icons img {
+.socialIcons img {
     width: 30px;
 }
 
-.social-icons {
+.socialIcons {
     margin: 10px 0;
 }
 
-.social-icons a {
+.socialIcons a {
     border: 1px solid #7deef8;
     border-radius: 20%;
     display: inline-flex;
@@ -163,7 +165,7 @@
     height: 35px;
 }
 
-.toggle-container {
+.toggleContainer {
     position: absolute;
     top: 0;
     left: 50%;
@@ -175,7 +177,7 @@
     z-index: 1000;
 }
 
-.container.active .toggle-container {
+.container.active .toggleContainer {
     transform: translateX(-100%);
     border-radius: 0 150px 100px 0;
 }
@@ -200,7 +202,7 @@
     transform: translateX(50%);
 }
 
-.toggle-panel {
+.togglePanel {
     position: absolute;
     width: 50%;
     height: 100%;
@@ -215,21 +217,21 @@
     transition: all 0.6s ease-in-out;
 }
 
-.toggle-left {
+.toggleLeft {
     transform: translateX(-200%);
 }
 
-.container.active .toggle-left {
+.container.active .toggleLeft {
     left: 0;
     transform: translateX(0);
 }
 
-.toggle-right {
+.toggleRight {
     right: 0;
     transform: translateX(0);
 }
 
-.container.active .toggle-right {
+.container.active .toggleRight {
     transform: translateX(200%);
 }
 
@@ -253,7 +255,7 @@
     position: relative;
 }
 
-.close-btn {
+.closeBtn {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -262,3 +264,4 @@
     font-size: 1.5rem;
     cursor: pointer;
 }
+

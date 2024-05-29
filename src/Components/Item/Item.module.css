@@ -1,3 +1,5 @@
+/* Item.module.css */
+
 .card {
   position: relative;
   width: 180px;
@@ -11,21 +13,21 @@
   cursor: pointer;
   overflow: hidden;
   z-index: 900;
-  opacity: 0; /* Ban đầu ẩn */
-  transform: translateY(50px); /* Ban đầu đẩy xuống dưới */
-  transition: opacity 0.5s ease, transform 0.5s ease; /* Thêm chuyển đổi cho opacity và transform */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.card.visible {
-  opacity: 1; /* Hiển thị khi phần tử vào vùng nhìn thấy */
-  transform: translateY(0); /* Đưa phần tử về vị trí ban đầu */
+.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.card:hover .card-image {
+.card:hover .cardImage {
   transform: scale(1.1);
 }
 
-.card-image {
+.cardImage {
   position: absolute;
   top: 0;
   left: 0;
@@ -63,7 +65,7 @@
   font-size: 15px;
 }
 
-.top-right {
+.topRight {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -74,11 +76,11 @@
   font-size: 14px;
   white-space: nowrap;
   z-index: 3000;
-  opacity: 0; /* Ban đầu ẩn */
+  opacity: 0;
   transition: opacity 0.3s ease, font-size 0.3s ease;
 }
 
-.card:hover .top-right {
-  opacity: 1; /* Hiển thị khi hover */
+.card:hover .topRight {
+  opacity: 1;
   font-size: 14px;
 }

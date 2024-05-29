@@ -1,0 +1,56 @@
+/* Display.module.css */
+.display {
+    display: flex;
+    flex-direction: column;
+    margin-left: 150px;
+    margin-right: 150px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .displayMainImg {
+    width: 220px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 10px; /* Optional: Adds some styling */
+  }
+  
+  .displayGrid {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    padding: 20px;
+    gap: 20px; /* Adjust spacing between columns */
+  }
+  
+  .displayLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .title {
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .displayRight {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .displayRightDesc,
+  .displayRightActor,
+  .displayRightDirector,
+  .displayRightTap,
+  .displayRightNam,
+  .displayRightQuocgia,
+  .displayRightTheloai,
+  .displayRightRating {
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: 500;
+    gap: 5px;
+  }
+  

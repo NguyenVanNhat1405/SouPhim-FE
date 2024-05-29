@@ -16,7 +16,7 @@ ul {
   color: white;
 }
 
-.nav-links {
+.navLinks {
   display: flex;
   list-style: none;
   /* Your existing nav-links styles */
@@ -34,7 +34,7 @@ ul {
 
 
 /*Styling Links*/
-.nav-links {
+.navLinks {
   display: flex;
   list-style: none;
   width: 88vw;
@@ -44,64 +44,33 @@ ul {
   text-transform: uppercase;
 }
 
-.nav-links li a {
+.navLinks li a {
   text-decoration: none;
   margin: 0 0.1vw;
 }
 
-.nav-links li a:hover {
+.navLinks li a:hover {
   color: #61DAFB;
 }
 
-.nav-links li {
+.navLinks li {
   position: relative;
 }
 
-.nav-links li a:hover::before {
+.navLinks li a:hover::before {
   width: 80%;
 }
 
 /*Styling Buttons*/
-.login-button {
-  background-color: transparent;
-  border: 1.5px solid #f2f5f7;
-  border-radius: 2em;
-  padding: 0.6rem 0.8rem;
-  margin-left: 2vw;
-  font-size: 1rem;
-  cursor: pointer;
 
-}
 
-.nav-links {
+.navLinks {
   display: flex;
   list-style: none;
   /* Your existing nav-links styles */
 }
 
-.login-button:hover {
-  color: #131418;
-  background-color: #f2f5f7;
-  border: 1.5px solid #f2f5f7;
-  transition: all ease-in-out 350ms;
-}
 
-.join-button {
-  color: #131418;
-  background-color: #61DAFB;
-  border: 1.5px solid #61DAFB;
-  border-radius: 2em;
-  padding: 0.6rem 0.8rem;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.join-button:hover {
-  color: #f2f5f7;
-  background-color: transparent;
-  border: 1.5px solid #f2f5f7;
-  transition: all ease-in-out 350ms;
-}
 
 /*Styling Hamburger Icon*/
 .hamburger div {
@@ -117,7 +86,7 @@ ul {
   display: none;
 }
 
-.nav-links img {
+.navLinks img {
   z-index: 9999;
 }
 
@@ -139,7 +108,7 @@ ul {
     transition: all 0.7s ease;
   }
 
-  .nav-links {
+  .navLinks {
     position: fixed;
     background: #131418;
     height: 100vh;
@@ -151,42 +120,42 @@ ul {
     pointer-events: none;
   }
 
-  .nav-links.open {
+  .navLinks.open {
     clip-path: circle(1000px at 90% -10%);
     -webkit-clip-path: circle(1000px at 90% -10%);
     pointer-events: all;
   }
 
-  .nav-links li {
+  .navLinks li {
     opacity: 0;
   }
 
-  .nav-links li:nth-child(1) {
+  .navLinks li:nth-child(1) {
     transition: all 0.5s ease 0.2s;
   }
 
-  .nav-links li:nth-child(2) {
+  .navLinks li:nth-child(2) {
     transition: all 0.5s ease 0.4s;
   }
 
-  .nav-links li:nth-child(3) {
+  .navLinks li:nth-child(3) {
     transition: all 0.5s ease 0.6s;
   }
 
-  .nav-links li:nth-child(4) {
+  .navLinks li:nth-child(4) {
     transition: all 0.5s ease 0.7s;
   }
 
-  .nav-links li:nth-child(5) {
+  .navLinks li:nth-child(5) {
     transition: all 0.5s ease 0.8s;
   }
 
-  .nav-links li:nth-child(6) {
+  .navLinks li:nth-child(6) {
     transition: all 0.5s ease 0.9s;
     margin: 0;
   }
 
-  .nav-links li:nth-child(7) {
+  .navLinks li:nth-child(7) {
     transition: all 0.5s ease 1s;
     margin: 0;
   }
@@ -196,10 +165,7 @@ ul {
   }
 }
 
-.nav-links-wrapper {
-  position: relative;
-  /* Thêm này để tạo phần tử cha có vị trí tương đối */
-}
+
 
 /*Animating Hamburger Icon on Click*/
 .toggle .line1 {

@@ -1,25 +1,25 @@
-import React,{useState} from 'react';
-import './New.css';
-import '../Login/Login.css';
+import React from 'react';
+import style from './New.module.css';
+// import '../Login/Login.css';
 import Item from '../Item/Item.jsx';
 import new_videos from '../Assets/newphim.js';
-import Login from '../Login/Login.jsx';
+// import Login from '../Login/Login.jsx';
 
 const New = () => {
-    const [isLoginVisible, setIsLoginVisible] = useState(false);
+  //   const [isLoginVisible, setIsLoginVisible] = useState(false);
 
-  const showLogin = () => {
-    setIsLoginVisible(true);
-  };
+  // const showLogin = () => {
+  //   setIsLoginVisible(true);
+  // };
 
-  const closeLogin = () => {
-    setIsLoginVisible(false);
-  };
+  // const closeLogin = () => {
+  //   setIsLoginVisible(false);
+  // };
   return (
     <div>
-      <div className="new-video">
+      <div className={style.newVideo}>
         <h1>Phim mới ra mắt</h1>
-        <div className="videos">
+        <div className={style.videos}>
           {new_videos.map((item, i) => (
             <Item
               key={i}
@@ -30,10 +30,6 @@ const New = () => {
             />
           ))}
         </div>
-      </div>
-      <div className="login-form" showLogin={showLogin} closeLogin={closeLogin}>
-        
-        {isLoginVisible && <Login onClose={closeLogin} />}
       </div>
     </div>
   );

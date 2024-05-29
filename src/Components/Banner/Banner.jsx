@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Banner.css';
+import style from './Banner.module.css';
 
 const Banner = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -15,13 +15,13 @@ const Banner = ({ images }) => {
   }, [images]);
 
   return (
-    <div className='banner'>
+    <div className={style.banner}>
       {images.map((image, index) => (
         <img
-          key={index}
+          key={`${image}-${index}`}
           src={image}
           alt="Banner"
-          className={index === currentImageIndex ? 'active' : ''}
+          className={index === currentImageIndex ? style.active : ''}
         />
       ))}
     </div>

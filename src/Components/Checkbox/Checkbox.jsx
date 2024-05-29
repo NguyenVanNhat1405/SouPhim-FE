@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Checkbox.css'; // Đảm bảo rằng bạn đã import file CSS của mình
+import style from './Checkbox.module.css'; // Import the CSS module
 
 const CheckboxWithIcons = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -9,33 +9,25 @@ const CheckboxWithIcons = () => {
   };
 
   return (
-    <div className="checkbox-container">
+    <div className={style.checkboxContainer}>
       <input
         type="checkbox"
         id="react-option"
-        className="hidden peer"
+        className={`${style.hidden} ${style.peer}`}
         checked={isChecked}
         onChange={handleCheckboxChange}
       />
       <label
         htmlFor="react-option"
-        className={`flex z-10 items-center peer relative justify-center w-14 h-14 shadow-lg duration-300 [box-shadow:1px_1px_0px_1px_#eab92d] border-2 border-gray-800 peer-checked:border-2 peer-checked:border-gray-800 rounded-lg cursor-pointer text-neutral-50 ${
-          isChecked
-            ? 'peer-checked:[box-shadow:1px_1px_0px_1px_#075985] peer-checked:hover:[box-shadow:1px_1px_0px_1px_#1e1e1e]'
-            : 'hover:[box-shadow:1px_1px_0px_1px_#1e1e1e]'
-        }`}
+        className={`${style.checkboxLabel}`}
       >
         <svg
-          className={`absolute stroke-sky-800 w-12 h-23 duration-300 ${
-            isChecked ? 'opacity-100' : 'opacity-0'
-          }`}
+          className={`${style.checkboxIcon} ${isChecked ? style.checked : style.unchecked}`}
           height="100"
           preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 100 100"
           width="100"
-          x="0"
           xmlns="http://www.w3.org/2000/svg"
-          y="0"
         >
           <path
             className="svg-stroke-primary"
@@ -47,16 +39,12 @@ const CheckboxWithIcons = () => {
           ></path>
         </svg>
         <svg
-          className={`absolute stroke-yellow-500 w-12 h-23 duration-300 ${
-            isChecked ? 'opacity-0' : 'opacity-100'
-          }`}
+          className={`${style.checkboxIcon} ${isChecked ? style.unchecked : style.checked}`}
           height="100"
           preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 100 100"
           width="100"
-          x="0"
           xmlns="http://www.w3.org/2000/svg"
-          y="0"
         >
           <path
             className="svg-stroke-primary"

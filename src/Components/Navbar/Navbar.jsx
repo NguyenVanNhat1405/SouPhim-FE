@@ -1,5 +1,5 @@
 import React from 'react';
-import './Navbar.css'; // Import CSS file
+import style from'./Navbar.module.css'; // Import CSS file
 import { Link } from 'react-router-dom';
 import login from '../Assets/dropdown.png';
 import Search from '../Search/Search';
@@ -16,17 +16,17 @@ function Navbar({ showLogin, closeLogin, handleShowForm, handleCloseForm}) {
   };
 
   return (
-    <div className='navbar'>
+    <div className={style.navbar}>
       <nav>
-        <div className="logo">
+      <div className={`${style.logo} logo`}>
           <img src={Logo} alt="logo" />
         </div>
-        <div className='hamburger' onClick={toggleMenu}>
+        <div className={`${style.hamburger} hamburger`} onClick={toggleMenu}>
           {/* Add hamburger icon here if needed */}
         </div>
         <Search></Search>
         
-        <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
+        <ul className={`${style.navLinks} ${isOpen ? 'open' : ''}`}>
           <li><Link to="/">Home</Link></li>
           <li
             onMouseEnter={() => setShowDropdown(true)}
@@ -34,7 +34,7 @@ function Navbar({ showLogin, closeLogin, handleShowForm, handleCloseForm}) {
           >
             <Link to="/">Thể Loại</Link>
             {showDropdown && (
-              <div className="dropdown">
+              <div className={style.dropdown}>
                 <ul>
                   <li><Link to="/theloai/action">Hành động</Link></li>
                   <li><Link to="/theloai/healing">Chữa Lành</Link></li>
@@ -53,7 +53,7 @@ function Navbar({ showLogin, closeLogin, handleShowForm, handleCloseForm}) {
           >
             <Link to="/">Quốc gia</Link>
             {showCountryDropdown && (
-              <div className="dropdown">
+              <div className={style.dropdown}>
                 <ul>
                   <li><Link to="/quocgia/viet">Việt Nam</Link></li>
                   <li><Link to="/quocgia/korea">Hàn Quốc</Link></li>
@@ -70,10 +70,10 @@ function Navbar({ showLogin, closeLogin, handleShowForm, handleCloseForm}) {
             onMouseEnter={() => setShowOption(true)}
             onMouseLeave={() => setShowOption(false)}
           >
-            <div className="login-wrapper">
+            <div className={style.loginWrapper}>
               <img src={login} alt="login" />
               {showOption && (
-                <div className="dropdown">
+                <div className={style.dropdown}>
                   <ul>
                     <li onClick={showLogin} style={{ cursor: 'pointer' }}showLogin={showLogin} closeLogin={closeLogin}>Đăng Nhập</li>
                     <li><Link to="/thongtin">Tài Khoản</Link></li>

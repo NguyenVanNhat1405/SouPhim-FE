@@ -1,49 +1,50 @@
-import React from 'react'
-import './Display.css'
+import React from 'react';
+import styles from './Display.module.css';
 import Rating from '../Rating/Rating';
+
 const Display = (props) => {
     const { img } = props;
     return (
-        
-        <div className='display'>
-            <div className='tille'>
+        <div className={styles.display}>
+            <div className={styles.title}>
                 <h1>{img.name}</h1>
             </div>
-            <div className='display-gird'>
-            <div className='display-left'>
-                <div className='display-img'>
-                    <img className='display-main-img' src={img.image} alt="" />
-                </div>
+            <div className={styles.displayRightRating}>
+                <Rating />
             </div>
-            <div className='display-right'>
-                <div>
-                    <Rating></Rating>
+            <div className={styles.displayGrid}>
+                <div className={styles.displayLeft}>
+                    <div className={styles.displayImg}>
+                        <img className={styles.displayMainImg} src={img.image} alt={img.name} />
+                    </div>
                 </div>
-                <div className='display-right-desc'>
-                    Mô Tả: {img.desc}
+                <div className={styles.displayRight}>
+
+                    <div className={styles.displayRightDesc}>
+                        Mô Tả: {img.desc}
+                    </div>
+                    <div className={styles.displayRightDirector}>
+                        Đạo Diễn: {img.director}
+                    </div>
+                    <div className={styles.displayRightActor}>
+                        Diễn Viên: {img.actor}
+                    </div>
+                    <div className={styles.displayRightTap}>
+                        Tập: {img.tap}
+                    </div>
+                    <div className={styles.displayRightNam}>
+                        Năm Sản Xuất: {img.nam}
+                    </div>
+                    <div className={styles.displayRightQuocgia}>
+                        Quốc Gia: {img.quocgia}
+                    </div>
+                    <div className={styles.displayRightTheloai}>
+                        Thể Loại: {img.theloai}
+                    </div>
                 </div>
-                <div className='display-right-director'>
-                    Đạo Diễn: {img.director}
-                </div>
-                <div className='display-right-director'>
-                    Diễn Viên: {img.actor}
-                </div>
-                <div className='display-right-tap'>
-                    Tập: {img.tap}
-                </div>
-                <div className='display-right-nam'>
-                    Năm Sản Xuất: {img.nam}
-                </div>
-                <div className='display-right-quocgia'>
-                    Quốc Gia: {img.quocqia}
-                </div>
-                <div className='display-right-theloai'>
-                   Thể Loại: {img.theloai} 
-                </div>
-            </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Display
+export default Display;

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import './Item.css';
+import style from'./Item.module.css';
 import { Link } from 'react-router-dom';
 
 const scrollToTop = () => {
@@ -14,9 +14,9 @@ const Item = (props) => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add(style.visible); // Thêm tiền tố của tên lớp CSS module
           } else {
-            entry.target.classList.remove('visible');
+            entry.target.classList.remove(style.visible); // Thêm tiền tố của tên lớp CSS module
           }
         });
       },
@@ -25,7 +25,7 @@ const Item = (props) => {
       }
     );
 
-    const currentCardRef = cardRef.current; // Lưu trữ giá trị của cardRef.current trong một biến khác
+    const currentCardRef = cardRef.current;
     if (currentCardRef) {
       observer.observe(currentCardRef);
     }
@@ -37,11 +37,12 @@ const Item = (props) => {
     };
   }, []);
 
+
   return (
-    <div className='card' ref={cardRef}>
+    <div className={style.card} ref={cardRef}>
       <Link to={`/review/${props.id}`} onClick={scrollToTop}>
-        <div className="card-image" style={{ backgroundImage: `url(${props.image})` }}></div>
-        <div className="top-right">{props.tap}</div>
+        <div className={style.cardImage} style={{ backgroundImage: `url(${props.image})` }}></div>
+        <div className={style.topRight}>{props.tap}</div>
         <div><p data-content={props.name}>{props.name}</p></div>
       </Link>
     </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Login.css';
+import styles from './Login.module.css'; // Import CSS module
 import { Link } from 'react-router-dom';
 import gg from '../Assets/gg.png';
 import facebook from '../Assets/facebook.png';
@@ -15,15 +15,15 @@ function Login({ onClose }) {
   };
 
   return (
-    <div className='login'>
-      <div className={`container ${isActive ? 'active' : ''}`} id="container">
-        <button className='close-btn' onClick={handleClose}>x</button>
-        <div className="form-container sign-up">
+    <div className={styles.login}> {/* Sử dụng className từ CSS module */}
+      <div className={`${styles.container} ${isActive ? styles.active : ''}`} id="container">
+        <button className={styles.closeBtn} onClick={handleClose}>x</button>
+        <div className={`${styles.formContainer} ${styles.signUp}`}>
           <form>
             <h1>Tạo tài khoản nào!!</h1>
-            <div className="social-icons">
-              <a href="https://google.com/" className="icon"><i className="fa-brands fa-google-plus-g"><img src={gg} alt="" /></i></a>
-              <a href="https://facebook.com/" className="icon"><i className="fa-brands fa-facebook-f"><img src={facebook} alt="" /></i></a>
+            <div className={styles.socialIcons}>
+              <a href="https://google.com/" className={styles.icon}><i className="fa-brands fa-google-plus-g"><img src={gg} alt="" /></i></a>
+              <a href="https://facebook.com/" className={styles.icon}><i className="fa-brands fa-facebook-f"><img src={facebook} alt="" /></i></a>
             </div>
             <span>hoặc sử dụng Email để đăng ký</span>
             <input type="text" placeholder="Tên" />
@@ -32,12 +32,12 @@ function Login({ onClose }) {
             <button type="button">Đăng ký</button>
           </form>
         </div>
-        <div className="form-container sign-in">
+        <div className={`${styles.formContainer} ${styles.signIn}`}>
           <form>
             <h1>Đăng nhập nào!!</h1>
-            <div className="social-icons">
-              <a href="https://google.com/" className="icon"><i className="fa-brands fa-google-plus-g"><img src={gg} alt="" /></i></a>
-              <a href="https://facebook.com/" className="icon"><i className="fa-brands fa-facebook-f"><img src={facebook} alt="" /></i></a>
+            <div className={styles.socialIcons}>
+              <a href="https://google.com/" className={styles.icon}><i className="fa-brands fa-google-plus-g"><img src={gg} alt="" /></i></a>
+              <a href="https://facebook.com/" className={styles.icon}><i className="fa-brands fa-facebook-f"><img src={facebook} alt="" /></i></a>
             </div>
             <span>hoặc Email và mật khẩu đã tạo</span>
             <input type="email" placeholder="Email" />
@@ -46,17 +46,17 @@ function Login({ onClose }) {
             <Link to="/"><button type="button">Đăng Nhập</button></Link>
           </form>
         </div>
-        <div className="toggle-container">
-          <div className="toggle">
-            <div className="toggle-panel toggle-left">
+        <div className={styles.toggleContainer}>
+          <div className={styles.toggle}>
+            <div className={`${styles.togglePanel} ${styles.toggleLeft}`}>
               <h1>Chào mừng bạn quay lại Souphim</h1>
               <p>Bạn đã có tài khoản rồi</p>
-              <button className="hidden" onClick={() => setIsActive(false)}>Đi thoai</button>
+              <button className={styles.hidden} onClick={() => setIsActive(false)}>Đi thoai</button>
             </div>
-            <div className="toggle-panel toggle-right">
+            <div className={`${styles.togglePanel} ${styles.toggleRight}`}>
               <h1>Chào bạn đã đến với Souphim</h1>
               <p>Đăng ký nếu bạn chưa có tài khoản</p>
-              <button className="hidden" onClick={() => setIsActive(true)}>Tạo ngay</button>
+              <button className={styles.hidden} onClick={() => setIsActive(true)}>Tạo ngay</button>
             </div>
           </div>
         </div>

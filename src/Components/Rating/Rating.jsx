@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Rating.css'; // Đảm bảo rằng bạn có file CSS để quản lý style
+import styles from './Rating.module.css'; // Import CSS module
 
 const Rating = () => {
   const [selectedStar, setSelectedStar] = useState(null);
@@ -9,7 +9,7 @@ const Rating = () => {
   };
 
   return (
-    <div className="rating">
+    <div className={styles.rating}> {/* Sử dụng className từ CSS module */}
       {[1, 2, 3, 4, 5].map((star) => (
         <React.Fragment key={star}>
           <input
