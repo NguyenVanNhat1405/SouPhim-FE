@@ -24,12 +24,20 @@ function ScrollToTop() {
 
 function App() {
   const [isLoginVisible, setIsLoginVisible] = useState(false);
+  const [isFormVisible, setIsFormVisible] = useState(false);
   const showLogin = () => {
     setIsLoginVisible(true);
   };
 
   const closeLogin = () => {
     setIsLoginVisible(false);
+  };
+  const showForm = () => {
+    setIsFormVisible(true);
+  };
+
+  const closeForm = () => {
+    setIsFormVisible(false);
   };
   
   const images = [image1, image2, image3]; // Moved images declaration here
@@ -38,8 +46,9 @@ function App() {
     <div>
       <BrowserRouter>
         <ScrollToTop />
-        <Navbar showLogin={showLogin} closeLogin={closeLogin}/>
+        <Navbar showLogin={showLogin} closeLogin={closeLogin} showForm={showForm} closeForm={closeForm}/>
         {isLoginVisible && <Login onClose={closeLogin} />}
+        {isFormVisible && <Form onClose={closeForm} />}
         <Banner images={images}></Banner> {/* Passing images to Banner component */}
         <Routes>
           
@@ -59,7 +68,7 @@ function App() {
           <Route path="/phimbo" element={<Home />} />
           <Route path='/review/:imgId' element={<Review/>}>
           </Route>
-          <Route path='/thongtin' element={<Form/>}></Route>
+          {/* <Route path='/thongtin' element={<Form/>}></Route> */}
         </Routes>
         <Footer />
       </BrowserRouter>

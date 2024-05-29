@@ -5,7 +5,7 @@ import login from '../Assets/dropdown.png';
 import Search from '../Search/Search';
 import Logo from '../Assets/logo.png';
 
-function Navbar({ showLogin, closeLogin, handleShowForm, handleCloseForm}) {
+function Navbar({ showLogin, closeLogin, showForm, closeForm}) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [showDropdown, setShowDropdown] = React.useState(false);
   const [showCountryDropdown, setShowCountryDropdown] = React.useState(false);
@@ -76,7 +76,7 @@ function Navbar({ showLogin, closeLogin, handleShowForm, handleCloseForm}) {
                 <div className={style.dropdown}>
                   <ul>
                     <li onClick={showLogin} style={{ cursor: 'pointer' }}showLogin={showLogin} closeLogin={closeLogin}>Đăng Nhập</li>
-                    <li><Link to="/thongtin">Tài Khoản</Link></li>
+                    <li onClick={showForm} style={{ cursor: 'pointer' }}showLogin={showForm} closeLogin={closeForm}>Tài Khoản</li>
 
                   </ul>
                 </div>

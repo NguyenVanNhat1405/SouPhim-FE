@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import sytle from './Form.module.css'; // Sử dụng styles từ CSS module
 
-const UserInfoForm = () => {
+const UserInfoForm = ({ onClose }) => { // Thêm {onClose} vào props
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -9,6 +9,7 @@ const UserInfoForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [isActive, setIsActive] = useState(false);
 
   const validate = () => {
     const newErrors = {};
@@ -35,9 +36,16 @@ const UserInfoForm = () => {
       // Here you can add the code to send data to the server
     }
   };
-
+  const handleClose = () => {
+    setIsActive(false);
+    if (onClose) {
+      onClose(); // Gọi hàm onClose được truyền từ component cha để đóng form
+    }
+  };
   return (
     <div className={sytle.former}>
+      <div className={`${sytle.container} ${isActive ? sytle.active : ''}`} id="container"></div>
+      <button className={sytle.closeBtn} onClick={handleClose}>x</button> {/* Thêm sự kiện onClick */}
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Name:</label>

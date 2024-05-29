@@ -1,58 +1,94 @@
+/* Form module */
+.former {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 9000;
+  color: black;
+}
+
+/* Container */
+.container {
+  position: relative;
+  width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.former label {
+  color: black;
+}
+/* Active class */
+.active {
+  transform: translateY(0);
+}
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  color: black;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1050; /* Đảm bảo nút hiển thị trên cùng */
+}
+
+.closeBtn:hover {
+  color: white; 
+}
+/* Close button */
+.closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  
+}
+
+/* Form elements */
 .former form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 1.5rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  
-  .former form div {
-    margin-bottom: 1rem;
-  }
-  
-  .former label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-  }
-  
-  .former input[type="text"],
-  .former  input[type="email"] {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .former input[type="text"]:focus,
-  .former input[type="email"]:focus {
-    border-color: #007BFF;
-    outline: none;
-    box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
-  }
-  
-  .error {
-    display: block;
-    margin-top: 0.25rem;
-    color: #d9534f;
-    font-size: 0.875rem;
-  }
-  
-  .former  button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .former button:hover {
-    background-color: #0056b3;
-  }
-  
+  margin-top: 20px;
+}
+
+.former label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.former input {
+  width: 500px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: black;
+}
+
+.former button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.former button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Error message */
+.error {
+  color: red;
+  font-size: 0.8rem;
+}
