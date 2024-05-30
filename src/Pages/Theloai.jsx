@@ -1,5 +1,5 @@
 import React from 'react';
-import './CSS/Category.css';
+import './CSS/Category.module.css';
 import Item from '../Components/Item/Item';
 import all_img from "../Components/Assets/all_img.js";
 

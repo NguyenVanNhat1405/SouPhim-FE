@@ -8,14 +8,14 @@
 }
 
 .carouselContainer h1 {
+  color: white;
+  font-size: 40px;
+  font-weight: 600;
   margin-top: 10px; /* Loại bỏ khoảng cách trên cùng */
   position: absolute; /* Đảm bảo phần tử này định vị tuyệt đối */
   top: 10px; /* Điều chỉnh vị trí so với phần tử cha */
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  font-size: 1.5rem; /* Adjust font size if needed */
-  color: #000; /* Adjust text color if needed */
+  left: 0%; /* Đưa phần tử này vào giữa */
+/* Adjust text color if needed */
 }
 
 .carousel {

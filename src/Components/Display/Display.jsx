@@ -30,7 +30,7 @@ const Display = (props) => {
                         Diễn Viên: {img.actor}
                     </div>
                     <div className={styles.displayRightTap}>
-                        Tập: {img.tap}
+                        Tập:{img.tapco}/{img.tap}
                     </div>
                     <div className={styles.displayRightNam}>
                         Năm Sản Xuất: {img.nam}

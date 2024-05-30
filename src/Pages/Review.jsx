@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { Context } from '../Context/Context';
 import { useParams } from 'react-router-dom';
 import Display from '../Components/Display/Display';
-import './CSS/Review.css';
+import style from './CSS/Review.module.css';
 import VideoPlayer from '../Components/VideoPlayer/VideoPlayer';
 import Tap from '../Components/Epi/Epi';
 const Review = () => {
   const { all_img } = useContext(Context);
   const { imgId } = useParams();
+  
   // const {epi} = props;
 
   const video = {
@@ -19,7 +20,7 @@ const Review = () => {
   if (!Array.isArray(all_img) || all_img.length === 0) {
     return <div className="background">Dữ liệu không khả dụng</div>;
   }
-  
+
 
   // Tìm kiếm ảnh với imgId
   const img = all_img.find((e) => e.id === Number(imgId));
@@ -27,15 +28,17 @@ const Review = () => {
   // console.log({tapList})
   // Kiểm tra nếu không tìm thấy ảnh
   if (!img) {
-    return <div className="background">Không tìm thấy ảnh</div>;
+    return <div className={style.background}>Không tìm thấy ảnh</div>;
   }
 
   return (
-    <div className='background'>
+    <div className={style.background}>
       <Display img={img} />
-      
-      <Tap tapList={img}></Tap>
-      <VideoPlayer videoSrc={video.src} title={video.title} description={video.description} />
+
+      <div className={style.watch}>
+        <VideoPlayer videoSrc={video.src} title={video.title} description={video.description} />
+        <Tap></Tap>
+      </div>
     </div>
   );
 };

@@ -42,7 +42,7 @@ const Item = (props) => {
     <div className={style.card} ref={cardRef}>
       <Link to={`/review/${props.id}`} onClick={scrollToTop}>
         <div className={style.cardImage} style={{ backgroundImage: `url(${props.image})` }}></div>
-        <div className={style.topRight}>{props.tap}</div>
+        <div className={style.topRight}>{props.tapco}/{props.tap}</div>
         <div><p data-content={props.name}>{props.name}</p></div>
       </Link>
     </div>
