@@ -56,7 +56,7 @@ function App() {
           <Route path='/theloai/action' element={<Theloai theloai="Hành Động"/>}/>
           <Route path='/theloai/drama' element={<Theloai theloai="Kịch Tính"/>}/>
           <Route path='/theloai/horror' element={<Theloai theloai="Kinh Dị"/>}/>
-          <Route path='/theloai/romance' element={<Theloai theloai="Lãng Mạng"/>}/>
+          <Route path='/theloai/romance' element={<Theloai theloai="Lãng Mạn"/>}/>
           <Route path='/theloai/scrience' element={<Theloai theloai="Viễn Tưởng"/>}/>
           <Route path='/theloai/healing' element={<Theloai theloai="Chữa Lành"/>}/>
           <Route path='/theloai/boylove' element={<Theloai theloai="Đam Mỹ"/>}/>

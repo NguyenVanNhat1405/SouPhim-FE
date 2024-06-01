@@ -1,5 +1,5 @@
 import React from 'react';
-import './CSS/Category.module.css';
+import style from './CSS/Category.module.css';
 import Item from '../Components/Item/Item';
 import all_img from "../Components/Assets/all_img.js";
 
@@ -17,11 +17,11 @@ const Theloai = (props) => {
   });
 
   return (
-    <div className='category-img'>
-      <div className='category-title'>
+    <div className={style.img}>
+      <div className={style.title}>
         <h1>{props.til}</h1>
       </div>
-      <div className='category'>
+      <div className={style.category}>
         {filteredImages.map((item, index) => (
           <Item key={index} id={item.id} name={item.name} image={item.image} tap={item.tap} />
         ))}

@@ -20,12 +20,15 @@ const Review = () => {
   if (!Array.isArray(all_img) || all_img.length === 0) {
     return <div className="background">Dữ liệu không khả dụng</div>;
   }
-
-
+ 
   // Tìm kiếm ảnh với imgId
   const img = all_img.find((e) => e.id === Number(imgId));
-  // const tapList = Array.from({ length: epi.tap }, (_, index) => index + 1);
-  // console.log({tapList})
+  
+  const totalEpisodes = img.tapco;
+
+  // Tạo mảng các số từ 1 đến totalEpisodes
+  const tapList = Array.from({ length: totalEpisodes }, (_, i) => i + 1);
+
   // Kiểm tra nếu không tìm thấy ảnh
   if (!img) {
     return <div className={style.background}>Không tìm thấy ảnh</div>;
@@ -37,7 +40,7 @@ const Review = () => {
 
       <div className={style.watch}>
         <VideoPlayer videoSrc={video.src} title={video.title} description={video.description} />
-        <Tap></Tap>
+        <Tap tapList={tapList}></Tap>
       </div>
     </div>
   );
