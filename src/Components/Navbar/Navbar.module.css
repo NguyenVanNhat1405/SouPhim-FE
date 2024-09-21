@@ -1,21 +1,29 @@
 nav {
+  display: flex;
+  margin: auto;
   height: 60px;
-  background-color: #564e4e;
-  box-shadow: 0 3px 20px rgba(232, 215, 215, 0.2);
+  background-color: hsla(211, 44%, 12%, 0.31); 
+  /* box-shadow: 0 3px 20px #27403e; */
   display: flex;
   z-index: 1000;
   top: 0;
   left: 0;
   right: 0;
-  width: auto;
+  max-width: 600px;
   align-items: center;
   position: fixed;
+  border: #0D1117;
+  border-radius: 15px;
 }
 
 ul {
   color: white;
 }
-
+.avatar {
+  width: 40px; /* Kích thước avatar */
+  height: 40px; /* Kích thước avatar */
+  border-radius: 50%; /* Avatar tròn */
+}
 .navLinks {
   display: flex;
   list-style: none;
@@ -50,7 +58,7 @@ ul {
 }
 
 .navLinks li a:hover {
-  color: #61DAFB;
+  color: #21a691;
 }
 
 .navLinks li {
@@ -67,6 +75,8 @@ ul {
 .navLinks {
   display: flex;
   list-style: none;
+ 
+  
   /* Your existing nav-links styles */
 }
 
@@ -217,12 +227,19 @@ ul {
 .dropdown ul li:hover {
   background-color: #1A1F24;
 }
-
+.loginWrapper {
+  position: relative;
+}
 .dropdown ul li a {
   text-decoration: none;
   color: white;
 }
 
 .dropdown ul li a:hover {
-  color: #555;
+ 
+    color: #21a691;
+  
+}
+.loginWrapper :hover{
+  color:#21a691
 }

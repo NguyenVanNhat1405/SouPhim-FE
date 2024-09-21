@@ -1,4 +1,6 @@
 .input {
+	display: flex;
+	padding: auto;
 	width: 270px;
 	height: 10px;
 	background-color: transparent;

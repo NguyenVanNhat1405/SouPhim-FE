@@ -44,6 +44,7 @@ const UserInfoForm = ({ onClose }) => { // Thêm {onClose} vào props
   };
   return (
     <div className={sytle.former}>
+      <div className={sytle.tilte}>Đăng Ký Tài Khoản</div>
       <div className={`${sytle.container} ${isActive ? sytle.active : ''}`} id="container"></div>
       <button className={sytle.closeBtn} onClick={handleClose}>x</button> {/* Thêm sự kiện onClick */}
       <form onSubmit={handleSubmit}>

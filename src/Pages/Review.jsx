@@ -4,11 +4,13 @@ import { useParams } from 'react-router-dom';
 import Display from '../Components/Display/Display';
 import style from './CSS/Review.module.css';
 import VideoPlayer from '../Components/VideoPlayer/VideoPlayer';
-import Tap from '../Components/Epi/Epi';
-const Review = () => {
+// import Tap from '../Components/Favorite/Favorite';
+import Comment from '../Components/Comment/Comment';
+
+const Review = ({ movieId, userId }) => {
   const { all_img } = useContext(Context);
   const { imgId } = useParams();
-  
+
   // const {epi} = props;
 
   const video = {
@@ -24,10 +26,10 @@ const Review = () => {
   // Tìm kiếm ảnh với imgId
   const img = all_img.find((e) => e.id === Number(imgId));
   
-  const totalEpisodes = img.tapco;
+  // const totalEpisodes = img.tapco;
 
   // Tạo mảng các số từ 1 đến totalEpisodes
-  const tapList = Array.from({ length: totalEpisodes }, (_, i) => i + 1);
+  // const tapList = Array.from({ length: totalEpisodes }, (_, i) => i + 1);
 
   // Kiểm tra nếu không tìm thấy ảnh
   if (!img) {
@@ -40,8 +42,9 @@ const Review = () => {
 
       <div className={style.watch}>
         <VideoPlayer videoSrc={video.src} title={video.title} description={video.description} />
-        <Tap tapList={tapList}></Tap>
+        {/* <Tap tapList={tapList}></Tap> */}
       </div>
+      <Comment movieId={movieId} userId={userId} />
     </div>
   );
 };

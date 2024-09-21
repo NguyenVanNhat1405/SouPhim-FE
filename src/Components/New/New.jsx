@@ -18,7 +18,7 @@ const New = () => {
   return (
     <div>
       <div className={style.newVideo}>
-        <h1>Phim mới ra mắt</h1>
+        <h1>Xu Hướng</h1>
         <div className={style.videos}>
           {new_videos.map((item, i) => (
             <Item

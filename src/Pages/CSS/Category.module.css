@@ -7,8 +7,8 @@
     
     /* Tự động mở rộng theo nội dung */
     gap: 20px;
-    background: linear-gradient(180deg, #817b82 0%, rgb(7, 7, 7) 60%);
-    padding-top: 10px;
+    background: #060d10;
+    padding-top: 2%;
     /* Thêm padding để tạo khoảng cách với thanh nav */
     /* Khoảng cách giữa phần tử này và thanh nav */
     position: relative;

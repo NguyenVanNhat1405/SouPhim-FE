@@ -1,5 +1,28 @@
-.home{
+.hot{
     display: grid;
-    grid-template-columns: 5fr 1fr;
-    background: linear-gradient(180deg, #817b82 0%, rgb(7, 7, 7) 50%);
+    grid-template-columns: 5fr 1fr;  
     }
+.home{
+    background-color: #060d10;
+
+}
+@keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @keyframes twinkling {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-1000px);
+    }
+  }

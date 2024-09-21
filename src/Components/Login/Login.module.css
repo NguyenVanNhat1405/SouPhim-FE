@@ -10,7 +10,7 @@
     border: none;
     font-size: 20px;
     cursor: pointer;
-    z-index: 1050; /* Đảm bảo nút hiển thị trên cùng */
+    z-index: 9050; /* Đảm bảo nút hiển thị trên cùng */
 }
 
 .closeBtn:hover {
@@ -63,10 +63,9 @@
 }
 
 .container button {
-    background-color: #817b82;
-    color: #333;
+    background-color: #212a37;
+    color: white;
     font-size: 12px;
-    padding: 10px 45px;
     border: 1px solid transparent;  
     border-radius: 8px;
     font-weight: 600;
@@ -93,8 +92,8 @@
 }
 
 .container input {
-    background-color: #9d9c9d;
-    color: #333;
+    background-color: #212a37;
+    color: white;
     border: none;
     margin: 8px 0;
     padding: 10px 15px;
@@ -247,7 +246,31 @@
     align-items: center;
     z-index: 1000;
 }
-
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 1000;
+    text-align: center;
+    font-size: 18px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .notification.success {
+    background-color: green; /* Thông báo thành công */
+  }
+  
+  .notification.error {
+    background-color: red; /* Thông báo lỗi */
+  }
+  
+  
 .container {
     background: white;
     padding: 2rem;

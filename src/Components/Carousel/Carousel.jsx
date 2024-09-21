@@ -9,7 +9,8 @@ const Carousel = () => {
   return (
     <div className={style.carouselContainer}>
       <div>
-        <h1>Phim Hot</h1>
+        <h1>Phổ Biến
+        </h1>
       </div>
       <div className={style.carousel} ref={carouselRef}>
         {hot_img.map((item, index) => (

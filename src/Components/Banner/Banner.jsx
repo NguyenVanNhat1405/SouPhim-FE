@@ -15,15 +15,18 @@ const Banner = ({ images }) => {
   }, [images]);
 
   return (
-    <div className={style.banner}>
-      {images.map((image, index) => (
-        <img
-          key={`${image}-${index}`}
-          src={image}
-          alt="Banner"
-          className={index === currentImageIndex ? style.active : ''}
-        />
-      ))}
+    <div className={style.bann}>
+      <div className={style.title}><h1>Sắp ra mắt</h1></div>
+      <div className={style.banner}>
+        {images.map((image, index) => (
+          <img
+            key={`${image}-${index}`}
+            src={image}
+            alt="Banner"
+            className={index === currentImageIndex ? style.active : ''}
+          />
+        ))}
+      </div>
     </div>
   );
 };

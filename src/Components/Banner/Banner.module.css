@@ -1,8 +1,25 @@
+.title{
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #060d10;
+  font-size: 30px;
+  color: white;
+}
+.title h1{
+  font-size: 40px;
+  font-weight: 600;
+}
+.bann{
+  background-color: #060d10;
+  height: 680px;
+}
 .banner {
-
-  margin-top: 60px;
   width: 100%;
-  height: 40vh;
+  height: 60vh;
   overflow: hidden;
   align-items: center;
   justify-content: center;
@@ -10,12 +27,12 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  background: linear-gradient(180deg, #564e4e 0%, #817b82 60%);
+  
 }
 
 .banner img {
-  width: 800px;
-  height: 300px;
+  width: auto;
+  height: auto;
   /* Thay đổi từ height thành max-height */
   object-fit: cover;
   position: absolute;

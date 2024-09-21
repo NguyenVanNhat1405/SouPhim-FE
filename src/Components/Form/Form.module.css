@@ -1,15 +1,21 @@
 /* Form module */
+.tilte{
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
 .former {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: #060d10;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 9000;
-  color: black;
 }
 
 /* Container */
@@ -20,7 +26,7 @@
   padding: 20px;
 }
 .former label {
-  color: black;
+  color: white;
 }
 /* Active class */
 .active {
@@ -29,7 +35,7 @@
 .closeBtn {
   position: absolute;
   top: 10px;
-  color: black;
+  color: white;
   right: 10px;
   background: none;
   border: none;
@@ -59,13 +65,16 @@
 }
 
 .former label {
-  display: block;
+  display:flex;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
 .former input {
-  width: 500px;
+  display: flex;
+  justify-self: center;
+  align-items: center;  
+  width: 300px;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -76,15 +85,15 @@
 .former button[type="submit"] {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
-  color: black;
+  background-color: #21a691;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .former button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #27403e;
 }
 
 /* Error message */
@@ -92,3 +101,4 @@
   color: red;
   font-size: 0.8rem;
 }
+

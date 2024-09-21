@@ -8,8 +8,12 @@ import ContextProvider from './Context/Context';
 // Sử dụng createRoot thay vì ReactDOM.render
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+
     <ContextProvider>
-      <App />
+      <App>
+        
+      </App>
+
     </ContextProvider>
   </React.StrictMode>
 );
