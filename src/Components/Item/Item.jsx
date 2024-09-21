@@ -53,7 +53,7 @@ const Item = (props) => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/favorites', {
+      const response = await fetch('http://localhost:5000/api/favorites/add', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -87,7 +87,7 @@ const Item = (props) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/favorites/${user.id}/${item.id}`, {
+      const response = await fetch(`http://localhost:5000/api/favorites/delete${user.id}/${item.id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -21,7 +21,7 @@ function ScrollToTop() {
   return null;
 }
 
-function App() {
+function App({ user }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const [isLoginVisible, setIsLoginVisible] = useState(false);
@@ -89,7 +89,7 @@ function App() {
           <Route path="/quocgia/china" element={<Category banner={korea_banner} quocgia="Trung Quốc" />} />
           <Route path="/quocgia/viet" element={<Category banner={korea_banner} quocgia="Việt Nam" />} />
           <Route path="/quocgia/thai" element={<Category banner={korea_banner} quocgia="Thái Lan" />} />
-          <Route path="/favoritesList" element={<FavoritesList />} />
+          <Route path="/favoritesList" element={<FavoritesList user={user} />} />
           <Route path="/accountInfor" element={<AccountInfo />} />
           <Route path='/review/:imgId' element={<Review/>}>
           </Route>
