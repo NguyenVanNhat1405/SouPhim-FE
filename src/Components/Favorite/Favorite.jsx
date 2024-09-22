@@ -1,34 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Favorite.module.css';
 
+
 const FavoritesList = () => {
   const [favorites, setFavorites] = useState([]);
+   // Fetch the token from local storage
   
-  // const userId = props.user?.user?.id; // Get userId from props
-  const token = localStorage.getItem('token');
   useEffect(() => {
-    if (token) {
-
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('No token found');
+      return;
     }
 
     const fetchFavorites = async () => {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        console.error('No token found');
-        return;
-      }
-    
+      
       try {
-        const response = await fetch(`http://localhost:5000/api/favorites/get`, { // No need to include userId in the URL
+        const response = await fetch(`http://localhost:5000/api/favorites/get`, {
           headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Bearer ${token}`, // Send token in Authorization header
           },
         });
 
         if (response.ok) {
           const data = await response.json();
-          setFavorites(data);
-          localStorage.setItem('favorites', JSON.stringify(data));
+          setFavorites(data); // Set the favorites for the user
+          localStorage.setItem(`favorites_${token}`, JSON.stringify(data)); // Optionally store in local storage
         } else {
           console.error('Failed to fetch favorites');
         }
@@ -37,13 +34,13 @@ const FavoritesList = () => {
       }
     };
 
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites'));
+    const storedFavorites = JSON.parse(localStorage.getItem(`favorites_${token}`));
     if (storedFavorites && storedFavorites.length > 0) {
       setFavorites(storedFavorites);
     } else {
-      fetchFavorites();
+      fetchFavorites(); // Fetch from server if local storage is empty
     }
-  },  []);
+  }, []);
 
   const handleRemove = async (item) => {
     const token = localStorage.getItem('token');
@@ -53,10 +50,10 @@ const FavoritesList = () => {
     }
   
     try {
-      const response = await fetch(`http://localhost:5000/api/favorites/delete/${item.itemId}`, { // itemId is passed in the URL
+      const response = await fetch(`http://localhost:5000/api/favorites/delete/${item.itemId}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`, // Send token for authenticated request
           'Content-Type': 'application/json',
         },
       });
@@ -64,7 +61,7 @@ const FavoritesList = () => {
       if (response.ok) {
         const updatedFavorites = favorites.filter(fav => fav.itemId !== item.itemId);
         setFavorites(updatedFavorites);
-        localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+        localStorage.setItem(`favorites_${token}`, JSON.stringify(updatedFavorites)); // Update local storage
       } else {
         console.error('Failed to remove favorite');
       }

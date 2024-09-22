@@ -1,23 +1,29 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import style from './Item.module.css';
 import { Link } from 'react-router-dom';
+import { Context } from '../../Context/Context';
 
 const scrollToTop = () => {
   window.scrollTo(0, 0);
 };
 
-const Item = (props) => {
+const Item = ({ id }) => { // Thay thế id bằng { id } để nhận từ props
   const [isFavorite, setIsFavorite] = useState(false);
   const cardRef = useRef(null);
-
-  // Log để kiểm tra giá trị của props.user và các props khác
-  console.log('Item props:', props);
-
-  const user = props.user || { id: 'default-id' }; // Đảm bảo user luôn có id
+  const { movieDb } = useContext(Context);
+  
+  // Tìm phim dựa trên id
+  const movie = movieDb.find(movie => String(movie.id) === String(id)); 
 
   useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem(`favorites_${user.id}`)) || [];
-    const isItemFavorite = storedFavorites.some(fav => fav.itemId === props.id);
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('Không tìm thấy token');
+      return;
+    }
+
+    const storedFavorites = JSON.parse(localStorage.getItem(`favorites_${token}`)) || [];
+    const isItemFavorite = storedFavorites.some(fav => String(fav.itemId) === String(id)); // So sánh id kiểu chuỗi
     setIsFavorite(isItemFavorite);
 
     const observer = new IntersectionObserver(
@@ -43,12 +49,12 @@ const Item = (props) => {
         observer.unobserve(currentCardRef);
       }
     };
-  }, [props.id, user.id]);
+  }, [id]);
 
   const handleFavorite = async (item) => {
     const token = localStorage.getItem('token');
     if (!token) {
-      console.error('No token found');
+      console.error('Không tìm thấy token');
       return;
     }
 
@@ -60,10 +66,9 @@ const Item = (props) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId: user.id,  // Đảm bảo gửi đúng userId
           itemId: item.id,
           name: item.name,
-          imageUrl: item.imageUrl,
+          imageUrl: item.image,
         }),
       });
 
@@ -75,19 +80,19 @@ const Item = (props) => {
         console.error('Server trả về lỗi:', errorData);
       }
     } catch (error) {
-      console.error('Error adding favorite:', error);
+      console.error('Lỗi khi thêm yêu thích:', error);
     }
   };
 
   const removeFavorite = async (item) => {
     const token = localStorage.getItem('token');
     if (!token) {
-      console.error('No token found');
+      console.error('Không tìm thấy token');
       return;
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/favorites/delete${user.id}/${item.id}`, {
+      const response = await fetch(`http://localhost:5000/api/favorites/delete/${item.id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -96,42 +101,66 @@ const Item = (props) => {
       });
 
       if (response.ok) {
+        setIsFavorite(false);
         console.log('Yêu thích đã được xóa');
       } else {
         const errorData = await response.json();
         console.error('Server trả về lỗi khi xóa:', errorData);
       }
     } catch (error) {
-      console.error('Error removing favorite:', error);
+      console.error('Lỗi khi xóa yêu thích:', error);
     }
   };
 
-  const toggleFavorite = () => {
-    if (!props.id || !props.name) {
+  const toggleFavorite = async () => {
+    if (!movie.id || !movie.name) {
       console.error('Thiếu dữ liệu cần thiết của item');
       return;
     }
 
-    setIsFavorite(!isFavorite);
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('Không tìm thấy token');
+      return;
+    }
 
-    const storedFavorites = JSON.parse(localStorage.getItem(`favorites_${user.id}`)) || [];
+    const storedFavorites = JSON.parse(localStorage.getItem(`favorites_${token}`)) || [];
 
     if (!isFavorite) {
-      const updatedFavorites = [...storedFavorites, { itemId: props.id, name: props.name }];
-      localStorage.setItem(`favorites_${user.id}`, JSON.stringify(updatedFavorites));
-      handleFavorite(props); // Add to backend
+      const updatedFavorites = [...storedFavorites, { itemId: movie.id, name: movie.name }];
+      localStorage.setItem(`favorites_${token}`, JSON.stringify(updatedFavorites));
+
+      try {
+        await handleFavorite(movie); // Gửi yêu cầu thêm yêu thích lên backend
+        setIsFavorite(true); // Cập nhật UI sau khi backend trả về thành công
+      } catch (error) {
+        console.error('Lỗi khi thêm yêu thích:', error);
+      }
     } else {
-      const updatedFavorites = storedFavorites.filter(fav => fav.itemId !== props.id);
-      localStorage.setItem(`favorites_${user.id}`, JSON.stringify(updatedFavorites));
-      removeFavorite(props); // Remove from backend
+      const updatedFavorites = storedFavorites.filter(fav => fav.itemId !== movie.id);
+      localStorage.setItem(`favorites_${token}`, JSON.stringify(updatedFavorites));
+
+      try {
+        await removeFavorite(movie); // Gửi yêu cầu xóa yêu thích lên backend
+        setIsFavorite(false); // Cập nhật UI sau khi backend trả về thành công
+      } catch (error) {
+        console.error('Lỗi khi xóa yêu thích:', error);
+      }
     }
   };
 
+  if (!movie) {
+    return null; // Nếu không tìm thấy phim, không hiển thị gì
+  }
+
   return (
     <div className={style.card} ref={cardRef}>
-      <Link to={`/review/${props.id}`} onClick={scrollToTop}>
-        <div className={style.cardImage} style={{ backgroundImage: `url(${props.image})` }}></div>
-        <div><p>{props.name}</p></div>
+      <Link to={`/Movie/${movie.id}`} onClick={scrollToTop}>
+        <div className={style.cardImage} style={{ backgroundImage: `url(${movie.image})` }}></div>
+        <div className={style.cardInfo}>
+          <p>{movie.name}</p>
+          {/* <p>{movie.seasons.length > 0 ? `Số tập: ${movie.seasons.length}` : 'tập?'}</p> */}
+        </div>
       </Link>
       <svg
         onClick={toggleFavorite}

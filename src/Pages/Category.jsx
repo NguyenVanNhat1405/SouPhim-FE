@@ -1,49 +1,50 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import style from './CSS/Category.module.css';
-import { useLocation } from 'react-router-dom'; 
-// import { Context } from '../Context/Context';
+import { Context } from '../Context/Context';
 import Item from '../Components/Item/Item';
-import all_img from "../Components/Assets/all_img.js";
-const Category = (props) => {
-  const location = useLocation(); // Sử dụng hook useLocation để lấy thông tin về route hiện tại
-
-  // Tạo một mảng để lưu các tiêu đề duy nhất
-  const uniqueTitles = [...new Set(all_img.map(item => item.quocgia))];
-
-  // Lấy tiêu đề tương ứng với route hiện tại
-  const getCurrentTitle = () => {
-    // Lấy đường dẫn của route hiện tại
-    const currentPath = location.pathname;
+const categoryMap = {
+  "Action": "Hành Động",
+  "Adventure": "Phiêu Lưu",
+  "Animation": "Hoạt Hình",
+  "Comedy": "Hài Hước",
+  "Crime": "Hình Sự",
+  "Drama": "Kịch Tính",
+  "Horror": "Kinh Dị",
+  "Romance": "Ngôn Tình",
+  "Science Fiction": "Viễn Tưởng",
+  "Thriller": "Hồi Hộp"
+};
+const Theloai = ({ theloai }) => {
+  const { movieDb } = useContext(Context); // Lấy all_img từ Context
+  const vietnameseCate = categoryMap[theloai]
+  // Lọc các ảnh dựa trên thể loại phim
+  const filteredImages = movieDb.filter((item) => {
+    const movieCate = categoryMap[item.genres]
+  
+    return !movieCate ===vietnameseCate || (item.genres && item.genres.includes(theloai));
     
-    // Duyệt qua mảng all_img để tìm tiêu đề tương ứng với route
-    for (let i = 0; i < all_img.length; i++) {
-      if (currentPath.includes(all_img[i].quocgia)) {
-        return all_img[i].quocgia;
-      }
-    }
-    // Nếu không tìm thấy, trả về null
-    return null;
-  };
+  });
 
   return (
     <div className={style.img}>
       <div className={style.title}>
-      <h1>{getCurrentTitle() || uniqueTitles[0]} </h1>
-      </div>
-      <div className={style.Indeximg}>
+        <h1>{vietnameseCate}</h1>
       </div>
       <div className={style.category}>
-        {all_img.map((item, i) => {
-          // Kiểm tra xem quốc gia của item có trùng với quốc gia truyền vào không
-          if (props.quocgia === item.quocgia) {
-            return <Item key={i} id={item.id} name={item.name} image={item.image} tap={item.tap} tapco={item.tapco} />;
-          } else {
-            return null;
-          }
-        })}
+        {filteredImages.length > 0 ? (
+          filteredImages.map((item) => (
+            <Item key={item} 
+            id={item.id} 
+            name={item.name} 
+            image={item.image} 
+              />
+          ))
+        ) : (
+          <div>Không có phim nào trong thể loại này.</div>
+        )}
       </div>
     </div>
   );
 };
 
-export default Category;
+export default Theloai;
