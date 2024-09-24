@@ -1,0 +1,60 @@
+.carouselContainer {
+  padding: 40px;
+  position: relative;
+  width: 54%;
+  height: 89vh; /* Adjust height as needed */
+  overflow: hidden;
+  background: none;
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Thêm viền cho toàn bộ container */
+  border-radius: 10px; /* Bo góc viền nếu muốn */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.carouselContainer h1 {
+  
+  color: white;
+  font-size: 40px;
+  font-weight: 600;
+  margin: 10px auto; /* Loại bỏ khoảng cách trên cùng */
+  position: absolute; /* Đảm bảo phần tử này định vị tuyệt đối */
+  top: 10px; /* Điều chỉnh vị trí so với phần tử cha */
+  left: 18%;; /* Đưa phần tử này vào giữa */
+}
+
+.carousel {
+  display: flex;
+  gap: 10px;
+  margin-top: 40px;
+  flex-direction: column; /* Cuộn theo chiều dọc */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  max-height: 600px;
+  scrollbar-width: thin; /* Hiển thị thanh cuộn mỏng cho Firefox */
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+}
+
+.carousel::-webkit-scrollbar {
+  width: 12px;
+}
+
+.carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.carouselItem {
+  flex: 0 0 auto;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.carouselItem img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}

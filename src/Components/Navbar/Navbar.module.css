@@ -1,4 +1,4 @@
-nav {
+.navbar nav {
   display: flex;
   margin: auto;
   height: 60px;
@@ -14,10 +14,11 @@ nav {
   position: fixed;
   border: #0D1117;
   border-radius: 15px;
+  color: white;
 }
 
-ul {
-  color: white;
+.navbar li a {
+  color: white ;
 }
 .avatar {
   width: 40px; /* Kích thước avatar */

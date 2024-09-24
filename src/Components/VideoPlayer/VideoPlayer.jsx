@@ -17,13 +17,7 @@ const VideoPlayer = ({ videoSrc }) => {
         allowFullScreen
         title="YouTube video player"
       ></iframe>
-      <div className={style.controls}>
-        <div className={style.buttonContainer}>
-          <button>Like</button>
-          <button>Share</button>
-          <button>Subscribe</button>
-        </div>
-      </div>
+      
     </div>
   );
 };

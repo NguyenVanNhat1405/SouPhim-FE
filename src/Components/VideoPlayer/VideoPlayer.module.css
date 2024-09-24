@@ -1,67 +1,29 @@
 /* VideoPlayer.module.css */
 .videoPlayerContainer {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    background-color: #000; /* Nền màu đen */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Bóng đổ */
-    border-radius: 12px; /* Bo góc mềm mại */
-    margin: 20px auto;
+  position: relative;
+  padding-bottom: 56.25%; /* Tỉ lệ 16:9 cho video */
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  max-width: 860px;
     transition: all 0.3s ease-in-out; /* Hiệu ứng mượt mà khi thay đổi */
   }
   
   .videoPlayer {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 12px;
+  top: 70px;
+  left: 0;
+  width: 100%; /* Video chiếm toàn bộ khung */
+  height: 76%;
+  border: none;
+  border-radius: 12px;
   }
   
-  .controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-  }
   
-  .buttonContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 300px;
-    margin: 0 auto;
-  }
   
-  button {
-    background-color: #cc0000; /* Màu đỏ YouTube */
-    color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #ff0000; /* Đổi màu khi hover */
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  
-  /* Điều chỉnh cho màn hình ngang */
-  @media screen and (min-aspect-ratio: 16/9) {
+  @media screen and (min-width: 1024px) {
     .videoPlayerContainer {
-      padding-bottom: 35%; /* Điều chỉnh tỉ lệ cho màn hình ngang */
-      max-width: 80%; /* Giảm chiều rộng video */
+      max-width: 860px; /* Giới hạn chiều rộng tối đa cho video trên màn hình lớn */
     }
   }
   
@@ -69,20 +31,7 @@
   @media screen and (max-width: 768px) {
     .videoPlayerContainer {
       padding-bottom: 56.25%; /* Giữ tỉ lệ 16:9 cho màn hình nhỏ */
-      max-width: 100%;
-    }
-  
-    .controls {
-      margin-top: 5px;
-    }
-  
-    .buttonContainer {
-      max-width: 250px;
-    }
-  
-    button {
-      padding: 8px 16px;
-      font-size: 14px;
+      max-width: 100%; /* Chiếm toàn bộ chiều ngang trên di động */
     }
   }
   

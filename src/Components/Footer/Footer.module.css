@@ -7,19 +7,19 @@
 
 }
 
-ul {
+.footer ul {
   list-style: none;
   padding: 0;
   display: flex;
   justify-content: center;
 }
 
-li {
+.footer li {
   margin: 0 10px;
   position: relative;
 }
 
-li::after {
+.footer li::after {
   content: "";
   display: block;
   height: 0px;
@@ -27,7 +27,7 @@ li::after {
   pointer-events: none;
 }
 
-li:hover::after {
+.footer li:hover::after {
   height: 10px;
 }
 

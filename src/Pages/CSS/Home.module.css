@@ -1,6 +1,6 @@
 .hot{
     display: grid;
-    grid-template-columns: 5fr 1fr;  
+    grid-template-columns: 5fr 1.5fr;  
     }
 .home{
     background-color: #060d10;

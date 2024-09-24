@@ -1,0 +1,40 @@
+.shareContainer {
+    position: relative;
+    display: inline-block;
+    padding-top: 20px;
+  }
+  
+  .shareButton {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  .shareButton:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+  }
+  
+  .shareOptions {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    z-index: 1000;
+  }
+  
+  .shareOptions a {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+  
+  .shareOptions a:hover {
+    opacity: 0.7;
+  }
+  

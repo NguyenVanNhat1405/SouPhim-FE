@@ -7,15 +7,16 @@ const categoryMap = {
   "Adventure": "Phiêu Lưu",
   "Animation": "Hoạt Hình",
   "Comedy": "Hài Hước",
-  "Crime": "Hình Sự",
+  "Mystery": "Giật Gân",
   "Drama": "Kịch Tính",
   "Horror": "Kinh Dị",
   "Romance": "Ngôn Tình",
-  "Science Fiction": "Viễn Tưởng",
-  "Thriller": "Hồi Hộp"
+  "Sci-Fi": "Viễn Tưởng",
+  "Family": "Gia Đình",
+  "Fantasy": "Chuyển Thể"
 };
-const Theloai = ({ theloai }) => {
-  const { movieDb } = useContext(Context); // Lấy all_img từ Context
+const Theloai = ({ theloai, showLogin }) => {
+  const { movieDb } = useContext(Context); 
   const vietnameseCate = categoryMap[theloai]
   // Lọc các ảnh dựa trên thể loại phim
   const filteredImages = movieDb.filter((item) => {
@@ -33,7 +34,7 @@ const Theloai = ({ theloai }) => {
       <div className={style.category}>
         {filteredImages.length > 0 ? (
           filteredImages.map((item) => (
-            <Item key={item} 
+            <Item key={item} showLogin={showLogin}
             id={item.id} 
             name={item.name} 
             image={item.image} 

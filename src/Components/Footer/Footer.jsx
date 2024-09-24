@@ -3,7 +3,8 @@ import Style from './Footer.module.css';
 
 function SocialIcons() {
   return (
-    <ul className={Style.example_2}>
+    <div className={Style.footer}>
+      <ul className={Style.example_2}>
       <li className={Style.icon_content}>
         <a href="https://www.spotify.com/" aria-label="Spotify" data-social="spotify">
           <div className={Style.filled}></div>
@@ -51,6 +52,7 @@ function SocialIcons() {
         <div className={Style.tooltip}>Instagram</div>
       </li>
     </ul>
+    </div>
   );
 }
 

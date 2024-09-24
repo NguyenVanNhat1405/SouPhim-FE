@@ -1,76 +1,72 @@
 .favorite {
   background-color: #060d10;
-  height: 80vh;
+  min-height: 100vh; /* Đảm bảo chiếm toàn bộ chiều cao trang */
   display: flex;
-  justify-content: center; /* Center the list horizontally */
-  align-items: center; /* Center the list vertically */
+  justify-content: center;
+  align-items: flex-start; /* Căn chỉnh đầu phần tử */
+  padding: 20px;
 }
 
 .favoritesList {
-  padding: 20px;
-  border: 1px solid #444;
-  border-radius: 12px;
-  background-color: #333;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
-  max-width: 600px;
-  margin: auto;
-  font-family: 'Montserrat', sans-serif;
-  /* display: block; Ensure block layout */
+  padding-top: 50px;
 }
 
-h1 {
-  font-size: 28px;
+.favoritesList h1 {
+  font-size: 32px;
   color: #fff;
   margin-bottom: 20px;
   text-align: center;
 }
 
-ul {
-  display: flex;
-  
+.favoritesList ul {
+  list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
 }
 
 .item {
-  display: flex; /* Ensure vertical stack */
-  flex-direction: column;
+  display: flex;
+  align-items: center;
   padding: 15px;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid #3b4b70;
   font-size: 18px;
-  transition: background-color 0.3s, transform 0.2s;
-  margin-bottom: 10px; /* Space between items */
+  transition: background-color 0.3s;
 }
 
 .item:hover {
-  background-color: #444;
-  transform: scale(1.02);
+  background-color: #354052; /* Hiệu ứng khi hover */
+}
+
+.item img {
+  width: 120px; /* Kích thước hình ảnh */
+  height: 180px; /* Đặt chiều cao để giữ tỉ lệ */
+  object-fit: cover; /* Giữ tỉ lệ hình ảnh */
+  margin-right: 15px;
+  border-radius: 6px; /* Bo góc hình ảnh */
 }
 
 .item p {
   margin: 0;
+  flex-grow: 1; /* Chiếm không gian còn lại */
 }
 
 .item button {
-  
-  background-color: #dc3545;
+  background-color: #ff4757; /* Màu nút xóa */
   color: #fff;
   border: none;
-  padding: 8px 16px;
+  padding: 8px 12px;
   border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  margin-top: 10px; /* Space between button and text */
+  transition: background-color 0.3s;
 }
 
 .item button:hover {
-  background-color: #c82333;
-  transform: scale(1.05);
+  background-color: #e84118; /* Hiệu ứng khi hover nút xóa */
 }
 
-p {
+.item p {
   text-align: center;
   color: #aaa;
   font-size: 18px;

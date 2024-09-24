@@ -70,33 +70,36 @@ function App({ user }) {
     <div>
       <BrowserRouter>
         <ScrollToTop />
+        <div className='Navbar'>
         <Navbar isLoggedIn={isLoggedIn} userInfo={userInfo} onLogout={handleLogout} showLogin={showLogin} closeLogin={closeLogin} showForm={showForm} closeForm={closeForm} />
         {isLoginVisible && <Login onLoginSuccess={handleLoginSuccess} onClose={closeLogin} />}
         {isFormVisible && <Form onClose={closeForm} />}
         
+        </div>
         <Routes>
           <Route path="/" element={<Home />} />
           {/* Thể loại */}
-          <Route path='/theloai/action' element={<Theloai theloai="Action" til="Hành Động" />} />
-          <Route path='/theloai/adventure' element={<Theloai theloai="Adventure" til="Phiêu Lưu" />} />
-          <Route path='/theloai/animation' element={<Theloai theloai="Animation" til="Hoạt Hình" />} />
-          <Route path='/theloai/comedy' element={<Theloai theloai="Comedy" til="Hài Hước" />} />
-          <Route path='/theloai/crime' element={<Theloai theloai="Crime" til="Hình Sự" />} />
-          <Route path='/theloai/drama' element={<Theloai theloai="Drama" til="Kịch Tính" />} />
-          <Route path='/theloai/horror' element={<Theloai theloai="Horror" til="Kinh Dị" />} />
-          <Route path='/theloai/romance' element={<Theloai theloai="Romance" til="Ngôn Tình" />} />
-          <Route path='/theloai/science' element={<Theloai theloai="Science Fiction" til="Khoa Học Viễn Tưởng" />} />
-          <Route path='/theloai/thriller' element={<Theloai theloai="Thriller" til="Hồi Hộp" />} />
+          <Route path='/theloai/action' element={<Theloai theloai="Action" type="movie" til="Hành Động" />} />
+          <Route path='/theloai/adventure' element={<Theloai theloai="Adventure" type="movie" til="Phiêu Lưu" />} />
+          <Route path='/theloai/animation' element={<Theloai theloai="Animation" type="movie" til="Hoạt Hình" />} />
+          <Route path='/theloai/comedy' element={<Theloai theloai="Comedy" type="movie" til="Hài Hước" />} />
+          <Route path='/theloai/mystery' element={<Theloai theloai="Mystery" type="movie" til="Giật Gân" />} />
+          <Route path='/theloai/drama' element={<Theloai theloai="Drama" type="movie" til="Kịch Tính" />} />
+          <Route path='/theloai/horror' element={<Theloai theloai="Horror"type="movie" til="Kinh Dị" />} />
+          <Route path='/theloai/romance' element={<Theloai theloai="Romance" type="movie" til="Ngôn Tình" />} />
+          <Route path='/theloai/science' element={<Theloai theloai="Sci-Fi" type="movie" til="Khoa Học Viễn Tưởng" />} />
+          <Route path='/theloai/family' element={<Theloai theloai="Family" type="movie" til="Gia Đình" />} />
+          <Route path='/theloai/fantasy' element={<Theloai theloai="Fantasy" type="movie" til="Chuyển Thể" />} />
           {/* Quốc gia */}
-          <Route path="/quocgia/korea" element={<Quocgia quocgia="South Korea" />} />
-          <Route path="/quocgia/china" element={<Quocgia quocgia="China" />} />
-          <Route path="/quocgia/viet" element={<Quocgia quocgia="Vietnam" />} />
-          <Route path="/quocgia/thai" element={<Quocgia quocgia="Thailand" />} />
-          <Route path="/quocgia/japan" element={<Quocgia quocgia="Japan" />} />
-          <Route path="/quocgia/usa" element={<Quocgia quocgia="United States of America" />} />
-          <Route path="/quocgia/uk" element={<Quocgia quocgia="United Kingdom" />} />
-          <Route path="/quocgia/france" element={<Quocgia quocgia="France" />} />
-          <Route path="/quocgia/khac" element={<Quocgia quocgia="Khác" />} />
+          <Route path="/quocgia/south korea" element={<Quocgia quocgia="South Korea" til="Hàn Quốc"/>} />
+          <Route path="/quocgia/china" element={<Quocgia quocgia="China"til="Trung Quốc" />} />
+          <Route path="/quocgia/vietnam" element={<Quocgia quocgia="Vietnam" til="Việt Nam"/>} />
+          <Route path="/quocgia/thailand" element={<Quocgia quocgia="Thailand"til="Thái Lan" />} />
+          <Route path="/quocgia/japan" element={<Quocgia quocgia="Japan" til="Nhật Bản"/>} />
+          <Route path="/quocgia/united states" element={<Quocgia quocgia="United States" til="Mỹ"/>} />
+          <Route path="/quocgia/united kingdom" element={<Quocgia quocgia="United Kingdom" til="Anh Quốc" />} />
+          <Route path="/quocgia/france" element={<Quocgia quocgia="France" til="Pháp"/>} />
+          <Route path="/quocgia/khac" element={<Quocgia quocgia="Khác"til="Khác" />} />
           {/* Các trang khác */}
           <Route path="/favoritesList" element={<FavoritesList user={user} />} />
           <Route path="/accountInfor" element={<AccountInfo />} />

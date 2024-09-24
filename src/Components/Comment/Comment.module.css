@@ -1,7 +1,7 @@
 .commentsection {
   width: 100%;
   max-width: 600px; /* Điều chỉnh theo nhu cầu */
-  margin: 20px auto;
+  margin: 0 auto;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -51,7 +51,7 @@ textarea {
   color: black;
 }
 
-button {
+.add_comment button {
   width: 120px;
   padding: 8px 16px;
   background-color: #007bff;
@@ -61,7 +61,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.add_comment button:hover {
   background-color: #0056b3;
 }
 .displayRightRating {

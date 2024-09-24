@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Favorite.module.css';
 
-
 const FavoritesList = () => {
   const [favorites, setFavorites] = useState([]);
-   // Fetch the token from local storage
-  
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
@@ -13,19 +11,24 @@ const FavoritesList = () => {
       return;
     }
 
-    const fetchFavorites = async () => {
-      
+    const fetchFavorites = async (item) => {
       try {
         const response = await fetch(`http://localhost:5000/api/favorites/get`, {
           headers: {
-            'Authorization': `Bearer ${token}`, // Send token in Authorization header
+            'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json',
           },
+          body: JSON.stringify({
+            itemId: item.id,
+            name: item.name,
+            imageUrl: item.imageUrl,
+          }),
         });
 
         if (response.ok) {
           const data = await response.json();
-          setFavorites(data); // Set the favorites for the user
-          localStorage.setItem(`favorites_${token}`, JSON.stringify(data)); // Optionally store in local storage
+          console.log("Fetched Favorites Data:", data); // Kiểm tra dữ liệu lấy về
+          setFavorites(data);
+          localStorage.setItem(`favorites_${token}`, JSON.stringify(data));
         } else {
           console.error('Failed to fetch favorites');
         }
@@ -38,7 +41,7 @@ const FavoritesList = () => {
     if (storedFavorites && storedFavorites.length > 0) {
       setFavorites(storedFavorites);
     } else {
-      fetchFavorites(); // Fetch from server if local storage is empty
+      fetchFavorites();
     }
   }, []);
 
@@ -48,12 +51,12 @@ const FavoritesList = () => {
       console.error('No token found');
       return;
     }
-  
+
     try {
       const response = await fetch(`http://localhost:5000/api/favorites/delete/${item.itemId}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${token}`, // Send token for authenticated request
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       });
@@ -61,7 +64,7 @@ const FavoritesList = () => {
       if (response.ok) {
         const updatedFavorites = favorites.filter(fav => fav.itemId !== item.itemId);
         setFavorites(updatedFavorites);
-        localStorage.setItem(`favorites_${token}`, JSON.stringify(updatedFavorites)); // Update local storage
+        localStorage.setItem(`favorites_${token}`, JSON.stringify(updatedFavorites));
       } else {
         console.error('Failed to remove favorite');
       }
@@ -74,18 +77,17 @@ const FavoritesList = () => {
     <div className={styles.favorite}>
       <div className={styles.favoritesList}>
         <h1>Danh sách yêu thích</h1>
-        {favorites.length > 0 ? (
-          <ul>
-            {favorites.map(item => (
-              <li key={item.itemId} className={styles.item}>
-                <p>{item.name}</p>
-                <button onClick={() => handleRemove(item)}>Xóa</button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>Danh sách yêu thích của bạn trống.</p>
-        )}
+        <ul>
+          {favorites.map(item => (
+            <li key={item.itemId} className={styles.item}>
+              {console.log("Image URL:", item.imageUrl)} {/* Kiểm tra đường dẫn hình ảnh */}
+              <img src={item.imageUrl} alt={item.name} />
+              <p>{item.name}</p>
+              <button onClick={() => handleRemove(item)}>Xóa</button>
+            </li>
+          ))}
+
+        </ul>
       </div>
     </div>
   );

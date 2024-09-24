@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import styles from'./Comment.module.css'; // Đảm bảo bạn có file CSS này để định kiểu
+import styles from './Comment.module.css'; // Đảm bảo bạn có file CSS này để định kiểu
 import { formatDistanceToNow } from 'date-fns'; // Thư viện format ngày tháng, có thể cài đặt bằng `npm install date-fns`
 import Rating from '../Rating/Rating';
 const CommentSection = ({ movieId, userId }) => {
@@ -115,8 +115,8 @@ const CommentSection = ({ movieId, userId }) => {
           placeholder="Add a comment..."
         />
         <div className='displayRightRating'>
-                <Rating />
-            </div>
+          <Rating />
+        </div>
         <button onClick={handleAddComment}>Post Comment</button>
       </div>
     </div>

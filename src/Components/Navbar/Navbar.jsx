@@ -43,6 +43,7 @@ function Navbar({ showLogin, closeLogin, showForm, closeForm }) {
     localStorage.removeItem(USER_INFO);
     setIsLoggedIn(false);
     setUserInfo(null);
+    window.location.reload()
   };
 
   return (
@@ -64,12 +65,13 @@ function Navbar({ showLogin, closeLogin, showForm, closeForm }) {
                   <li><Link to="/theloai/adventure">Phiêu Lưu</Link></li>
                   <li><Link to="/theloai/animation">Hoạt Hình</Link></li>
                   <li><Link to="/theloai/comedy">Hài Hước</Link></li>
-                  <li><Link to="/theloai/crime">Hình Sự</Link></li>
+                  <li><Link to="/theloai/mystery">Giật Gân</Link></li>
                   <li><Link to="/theloai/drama">Kịch Tính</Link></li>
                   <li><Link to="/theloai/horror">Kinh Dị</Link></li>
                   <li><Link to="/theloai/romance">Ngôn Tình</Link></li>
                   <li><Link to="/theloai/science">Viễn Tưởng</Link></li>
-                  <li><Link to="/theloai/thriller">Hồi Hộp</Link></li>
+                  <li><Link to="/theloai/family">Gia Đình</Link></li>
+                  <li><Link to="/theloai/fantasy">Chuyển Thể</Link></li>
                 </ul>
               </div>
             )}
@@ -82,13 +84,13 @@ function Navbar({ showLogin, closeLogin, showForm, closeForm }) {
             {showCountryDropdown && (
               <div className={style.dropdown}>
                 <ul>
-                  <li><Link to="/quocgia/viet">Việt Nam</Link></li>
-                  <li><Link to="/quocgia/korea">Hàn Quốc</Link></li>
+                  <li><Link to="/quocgia/vietnam">Việt Nam</Link></li>
+                  <li><Link to="/quocgia/south korea">Hàn Quốc</Link></li>
                   <li><Link to="/quocgia/china">Trung Quốc</Link></li>
-                  <li><Link to="/quocgia/thai">Thái Lan</Link></li>
+                  <li><Link to="/quocgia/thailand">Thái Lan</Link></li>
                   <li><Link to="/quocgia/japan">Nhật Bản</Link></li>
-                  <li><Link to="/quocgia/usa">Hoa Kỳ</Link></li>
-                  <li><Link to="/quocgia/uk">Anh Quốc</Link></li>
+                  <li><Link to="/quocgia/united states">Hoa Kỳ</Link></li>
+                  <li><Link to="/quocgia/united kingdom">Anh Quốc</Link></li>
                   <li><Link to="/quocgia/france">Pháp</Link></li>
                   <li><Link to="/quocgia/khac">Khác</Link></li>
                 </ul>

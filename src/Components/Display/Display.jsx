@@ -16,17 +16,8 @@ const Display = () => {
     }
 
     return (
-        <div className={styles.display}>
-            <div className={styles.title}>
-                <h1>{movie.name}</h1>
-            </div>
-            
+        <div className={styles.display}>            
             <div className={styles.displayGrid}>
-                <div className={styles.displayLeft}>
-                    <div className={styles.displayImg}>
-                        <img className={styles.displayMainImg} src={movie.image} alt={movie.name} />
-                    </div>
-                </div>
                 <div className={styles.displayRight}>
                     <div className={styles.displayRightDesc}>
                         Mô Tả: {movie.desc}

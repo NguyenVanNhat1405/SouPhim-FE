@@ -14,6 +14,8 @@
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
+
+
 .visible {
   opacity: 1;
   transform: translateY(0);
@@ -55,25 +57,7 @@
   transform: translateY(0);
 }
 
-.favoriteIcon {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  z-index: 1000;
-}
 
-.favoriteIcon.active {
-  fill: red; /* Màu đỏ khi đã yêu thích */
-  transform: scale(1.2); /* Hiệu ứng khi được yêu thích */
-}
-
-.favoriteIcon:hover {
-  transform: scale(1.1); /* Tăng nhẹ kích thước khi hover */
-}
 
 
 .topRight {

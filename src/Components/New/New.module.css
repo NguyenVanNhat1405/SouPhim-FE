@@ -1,39 +1,53 @@
 /* New.css */
 .newVideo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%; /* Tự động mở rộng theo nội dung */
-    gap: 10px;
-     /* Thêm padding để tạo khoảng cách với thanh nav */
-     background-color: #060d10;
-   margin-left: 30px;
-   padding: 40px 20px;
-    position: relative; /* Đảm bảo phần tử này định vị tương đối */
-    padding-bottom: 10px;
-    height:90vh;
-  }
-  
-  .newVideo h1 {
-    color: white;
-    font-size: 40px;
-    font-weight: 600;
-    margin-top: 10px; /* Loại bỏ khoảng cách trên cùng */
-    position: absolute; /* Đảm bảo phần tử này định vị tuyệt đối */
-    top: 10px; /* Điều chỉnh vị trí so với phần tử cha */
-    left: 50%; /* Đưa phần tử này vào giữa */
-    transform: translateX(-50%); /* Đưa phần tử này vào giữa */
-    z-index: 1; /* Đảm bảo hiển thị trên thanh nav */
-  }
-  
-  .videos {
-    justify-content: center;
-    display: grid;
-    grid-template-columns: 1.2fr 1.2fr 1.2fr 1.2fr;
-    gap: 20px;
-    padding-top: 10px;
-    width: 100%; /* Mở rộng hết khung chứa */
-    max-width: 1200px;
-    margin-top: 30px; /* Khoảng cách từ tiêu đề xuống danh sách video */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin-left: 150px;
+  padding: 30px;
+  /* Tự động mở rộng theo nội dung */
+  gap: 20px;
+  /* Thêm padding để tạo khoảng cách với thanh nav */
+  background-color: #060d10;
+  position: relative;
+  /* Đảm bảo phần tử này định vị tương đối */
+  padding-bottom: 10px;
+  height: 95vh;
+  background: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  /* Thêm viền cho toàn bộ container */
+  border-radius: 10px;
+  /* Bo góc viền nếu muốn */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.newVideo h1 {
+  color: white;
+  font-size: 40px;
+  font-weight: 600;
+  margin-top: 10px;
+  /* Loại bỏ khoảng cách trên cùng */
+  position: absolute;
+  /* Đảm bảo phần tử này định vị tuyệt đối */
+  top: 10px;
+  /* Điều chỉnh vị trí so với phần tử cha */
+  left: 50%;
+  /* Đưa phần tử này vào giữa */
+  transform: translateX(-50%);
+  /* Đưa phần tử này vào giữa */
+  z-index: 1;
+  /* Đảm bảo hiển thị trên thanh nav */
+}
+
+.videos {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 1.2fr 1.2fr;
+  gap: 50px;
+  padding-top: 20px;
+  /* Mở rộng hết khung chứa */
+  max-width: 1200px;
+  margin-top: 30px;
+  /* Khoảng cách từ tiêu đề xuống danh sách video */
+}
