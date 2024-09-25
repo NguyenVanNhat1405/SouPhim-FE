@@ -10,7 +10,9 @@ import Movie from './Pages/Movie';
 import Form from './Components/Form/Form';
 import AccountInfo from './Components/AccountInfo/AccountInfo';
 import FavoritesList from './Components/Favorite/Favorite';
-
+import Search from './Components/Search/Search';
+import BackToTop from './Components/BackTop/BackToTop';
+import SearchPage from './Pages/SearchPage';
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -74,10 +76,11 @@ function App({ user }) {
         <Navbar isLoggedIn={isLoggedIn} userInfo={userInfo} onLogout={handleLogout} showLogin={showLogin} closeLogin={closeLogin} showForm={showForm} closeForm={closeForm} />
         {isLoginVisible && <Login onLoginSuccess={handleLoginSuccess} onClose={closeLogin} />}
         {isFormVisible && <Form onClose={closeForm} />}
-        
+        <Search/>
         </div>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/search" element={<SearchPage/>} />
           {/* Thể loại */}
           <Route path='/theloai/action' element={<Theloai theloai="Action" type="movie" til="Hành Động" />} />
           <Route path='/theloai/adventure' element={<Theloai theloai="Adventure" type="movie" til="Phiêu Lưu" />} />
@@ -105,6 +108,7 @@ function App({ user }) {
           <Route path="/accountInfor" element={<AccountInfo />} />
           <Route path='/Movie/:movieId' element={<Movie/>} />
         </Routes>
+        <BackToTop />
         <Footer />
       </BrowserRouter>
     </div>

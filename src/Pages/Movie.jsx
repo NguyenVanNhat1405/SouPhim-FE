@@ -7,6 +7,7 @@ import Comment from '../Components/Comment/Comment';
 import { useNavigate } from 'react-router-dom';
 import AddFavorite from '../Components/AddFavorite/AddFavorite';
 import Share from '../Components/Share/Share';
+
 const Movie = () => {
   const { movieId } = useParams(); // Lấy movieId từ URL
   const { movieDb } = useContext(Context); // Lấy movieDb từ Context
@@ -54,13 +55,13 @@ const Movie = () => {
         </div>
       </div>
       <div className={style.genres}>
-        {movie.genres && movie.genres.map((genre, index) => (
-          <button key={genre} onClick={() => handleGenreClick(genre)} className={style.genreButton}>
+        {movie.genres && movie.genres.map((genre) => (
+          <button key={genre.id} onClick={() => handleGenreClick(genre)} className={style.genreButton}>
             {genre}
           </button>
         ))}
-        {movie.countries && movie.countries.map((country, index) => (
-          <button key={country} onClick={() => handleCountyClick(country)} className={style.genreButton}>
+        {movie.countries && movie.countries.map((country) => (
+          <button key={country.id} onClick={() => handleCountyClick(country)} className={style.genreButton}>
             {country}
           </button>
         ))}
@@ -77,7 +78,7 @@ const Movie = () => {
         </div>
       </div>
 
-      <Comment movieId={movieId} userId="exampleUserId" />
+      <Comment movieId={movie.id} />
     </div>
   );
 };

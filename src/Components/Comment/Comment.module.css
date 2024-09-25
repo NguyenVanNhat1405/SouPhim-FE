@@ -1,4 +1,5 @@
 .commentsection {
+  color: black;
   width: 100%;
   max-width: 600px; /* Điều chỉnh theo nhu cầu */
   margin: 0 auto;
@@ -6,18 +7,49 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f9f9f9;
-}
-.commentsection h3{
-  color: black;
-}
-.commentlist {
-  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.commentitem {
-  margin-bottom: 15px;
+.commentsection h3 {
+  color: black;
+  margin-bottom: 15px; /* Khoảng cách dưới tiêu đề */
+}
+
+.commentlist {
+  max-height: 200px; /* Chiều cao tối đa */
+  overflow-y: auto; /* Hiển thị thanh cuộn khi cần thiết */
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
   padding: 10px;
-  border-bottom: 1px solid #eee;
+  background-color: #fff; /* Màu nền cho danh sách bình luận */
+  position: relative; /* Để xác định vị trí của các phần tử bên trong */
+}
+
+
+.commentitem {
+  position: relative; /* Để có thể định vị các phần tử con */
+  padding: 10px;
+  border-bottom: 1px solid #ccc; /* Đường viền dưới mỗi bình luận */
+  display: flex; /* Sắp xếp nội dung theo hàng */
+  justify-content: space-between; /* Căn chỉnh nội dung hai bên */
+  align-items: flex-start; /* Căn giữa theo chiều dọc */
+  margin-bottom: 15px; /* Khoảng cách dưới mỗi bình luận */
+}
+
+.commentitem:last-child {
+  border-bottom: none; /* Không hiển thị đường viền dưới cho bình luận cuối cùng */
+}
+
+.commentContent {
+  flex: 1; /* Chiếm toàn bộ chiều rộng còn lại */
+  margin-right: 10px; /* Khoảng cách bên phải cho biểu tượng ba chấm */
+}
+
+.commentitem p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%; /* Đảm bảo không vượt quá chiều rộng của container */
 }
 
 .commentdate {
@@ -26,47 +58,123 @@
   margin-top: 5px;
 }
 
-.commentactions {
-  margin-top: 5px;
-}
-
-.commentactions button {
-  margin-right: 10px;
-}
-
-.addcomment {
+.add_comment {
   display: flex;
   flex-direction: column;
-  color: black;
+  margin-top: 20px;
 }
 
 textarea {
   width: 95%;
-  height: 40px;
+  height: 20px; /* Chiều cao lớn hơn để dễ nhập liệu */
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  resize: none; /* Ngăn không cho kéo giãn textarea */
-  color: black;
+  resize: none;
 }
 
 .add_comment button {
+  display: flex;
+  margin: auto;
   width: 120px;
   padding: 8px 16px;
-  background-color: #007bff;
+  background-color: #3c5a82;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .add_comment button:hover {
   background-color: #0056b3;
 }
+
 .displayRightRating {
   margin: 10px 0;
   font-size: 20px;
   font-weight: 500;
   gap: 5px;
 }
+
+.commentactions {
+  display: flex;
+  align-items: center;
+}
+
+.options {
+  display: none; /* Ẩn các tùy chọn mặc định */
+  position: absolute; /* Định vị các tùy chọn */
+  right: 10px; /* Căn phải */
+  top: 10px; /* Căn trên */
+  background-color: #fff; /* Màu nền trắng cho menu */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng cho menu */
+  border-radius: 4px; /* Bo góc cho menu */
+  z-index: 1; /* Đảm bảo menu nằm trên các phần tử khác */
+}
+
+.commentitem:hover .options {
+  display: flex; /* Hiển thị khi hover */
+  flex-direction: column; /* Sắp xếp theo cột */
+}
+
+.option-button {
+  padding: 5px 10px; /* Padding cho các nút */
+  cursor: pointer; /* Con trỏ chuột cho thấy có thể nhấn */
+  background-color: transparent; /* Nền trong suốt */
+  border: none; /* Không có đường viền */
+}
+
+.option-button:hover {
+  background-color: #f0f0f0; /* Màu nền khi hover */
+}
+
+.three-dots {
+  cursor: pointer; /* Con trỏ chuột cho thấy có thể nhấn */
+  font-size: 1.2em; /* Kích thước biểu tượng */
+  color: #3c5a82; /* Màu sắc cho biểu tượng */
+}
+
+.commentFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #888;
+}
+
+.commentDate {
+  margin-right: 10px;
+}
+
+.add_comment {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.commentInput {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  resize: none;
+}
+
+button {
+  padding: 8px 12px;
+  background-color: #3c5a82;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+
+.commentitem:last-child {
+  border-bottom: none; /* Không hiển thị đường viền dưới cho bình luận cuối cùng */
+}
+

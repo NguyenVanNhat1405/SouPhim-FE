@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import style from './Navbar.module.css'; // Import CSS module
 import { Link } from 'react-router-dom';
-import login from '../Assets/dropdown.png';
 import defaultAvatar from '../Assets/defaultAvatar.png'; // Default avatar
-
+import { FaHome, FaUserCircle } from "react-icons/fa";
 function Navbar({ showLogin, closeLogin, showForm, closeForm }) {
   const [isOpen, setIsOpen] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -52,7 +51,7 @@ function Navbar({ showLogin, closeLogin, showForm, closeForm }) {
         <div className={`${style.hamburger} hamburger`} onClick={toggleMenu}></div>
 
         <ul className={`${style.navLinks} ${isOpen ? 'open' : ''}`}>
-          <li><Link to="/">Home</Link></li>
+          <li><Link to="/"><FaHome size={30}/></Link></li>
           <li
             onMouseEnter={() => setShowDropdown(true)}
             onMouseLeave={() => setShowDropdown(false)}
@@ -122,7 +121,7 @@ function Navbar({ showLogin, closeLogin, showForm, closeForm }) {
                   </>
                 ) : (
                   <>
-                    <img src={login} alt="login" />
+                    <FaUserCircle size={30}/>
                     {showOption && (
                       <div className={style.dropdown}>
                         <ul>

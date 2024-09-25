@@ -37,7 +37,7 @@ const Quocgia = ({ quocgia, showLogin }) => {
         {filteredMovies.length > 0 ? (
           filteredMovies.map((item) => (
             <Item showLogin={showLogin}
-              key={item} 
+              key={item.id} 
               id={item.id} 
               name={item.name} 
               image={item.image} 

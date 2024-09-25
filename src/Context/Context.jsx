@@ -14,7 +14,7 @@ const ContextProvider = (props) => {
         const fetchMovieData = async () => {
             try {
                 // Lấy tất cả phim
-                const response = await axios.get('http://localhost:5000/api/movies/');
+                const response = await axios.get('http://localhost:5000/api/movies/get');
                 const movies = response.data;
 
                 // Lấy phim mới

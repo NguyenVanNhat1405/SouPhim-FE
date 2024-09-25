@@ -1,0 +1,22 @@
+.backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Đảm bảo nằm trên các thành phần khác */
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  
+  .backToTop:hover {
+    background-color: #0056b3;
+    transform: scale(1.1); /* Phóng to khi hover */
+  }
+  

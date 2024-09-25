@@ -56,12 +56,16 @@ function Login({ onClose, onLoginSuccess }) {
         },
         body: JSON.stringify({ email: loginData.email, password: loginData.password }),
       });
-
+  
       const data = await response.json();
       if (response.ok) {
         onLoginSuccess(data.user); // Notify parent component of successful login
+        
+        // Save both token and user info in localStorage
         localStorage.setItem('token', data.token);
-        window.location.reload() // Redirect to '/user' after successful login
+        localStorage.setItem('user', JSON.stringify(data.user)); // Save user info
+  
+        window.location.reload(); // Refresh the page after successful login
       } else {
         setError(data.msg || 'Đăng nhập thất bại');
       }
