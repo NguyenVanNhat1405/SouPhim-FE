@@ -24,7 +24,7 @@ const Movie = () => {
   const videoSrc = movie.trailer || 'https://www.w3schools.com/html/mov_bbb.mp4';
   const videoTitle = movie.title || 'Movie Trailer';
   const videoDescription = movie.overview || 'No description available';
-  console.log(videoSrc)
+
 
 
   const handleGenreClick = (genre) => {
@@ -55,12 +55,12 @@ const Movie = () => {
       </div>
       <div className={style.genres}>
         {movie.genres && movie.genres.map((genre, index) => (
-          <button key={index} onClick={() => handleGenreClick(genre)} className={style.genreButton}>
+          <button key={genre} onClick={() => handleGenreClick(genre)} className={style.genreButton}>
             {genre}
           </button>
         ))}
         {movie.countries && movie.countries.map((country, index) => (
-          <button key={index} onClick={() => handleCountyClick(country)} className={style.genreButton}>
+          <button key={country} onClick={() => handleCountyClick(country)} className={style.genreButton}>
             {country}
           </button>
         ))}
