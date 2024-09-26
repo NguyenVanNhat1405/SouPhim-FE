@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styles from './Comment.module.css'; // Đảm bảo bạn có file CSS này để định kiểu
 import { formatDistanceToNow } from 'date-fns'; // Thư viện format ngày tháng
-import { FaEllipsisV, FaPen, FaRegTrashAlt , FaMinus,FaCheck } from 'react-icons/fa'; // Import biểu tượng ba chấm
-import Rating from '../Rating/Rating';
+import { FaEllipsisV, FaPen, FaRegTrashAlt, FaMinus, FaCheck } from 'react-icons/fa'; // Import biểu tượng ba chấm
+
 
 const CommentSection = ({ movieId }) => {
   const [comments, setComments] = useState([]);
@@ -46,6 +46,12 @@ const CommentSection = ({ movieId }) => {
 
   // Hàm thêm bình luận mới
   const handleAddComment = async () => {
+    // Kiểm tra xem người dùng đã đăng nhập chưa
+    if (!userId) {
+      alert('Bạn phải đăng nhập để đăng bình luận.');
+      return;
+    }
+
     if (!newComment.trim()) return; // Ngăn chặn bình luận rỗng
 
     const storedUser = JSON.parse(localStorage.getItem('user')); // Lấy user từ localStorage
@@ -74,6 +80,7 @@ const CommentSection = ({ movieId }) => {
       console.error('Error adding comment:', error);
     }
   };
+
 
   // Hàm xóa bình luận
   const handleDeleteComment = async (commentId) => {
@@ -111,7 +118,7 @@ const CommentSection = ({ movieId }) => {
   return (
     <div className={styles.commentsection}>
       <h3>Comments</h3>
-  
+
       {/* Hiển thị danh sách bình luận */}
       <div className={styles.commentlist}>
         {comments.map((comment) => (
@@ -135,7 +142,7 @@ const CommentSection = ({ movieId }) => {
               <span className={styles.commentDate}>
                 {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}
               </span>
-              <span 
+              <span
                 className={styles.optionsIcon}
                 onClick={() => setShowOptions(showOptions === comment._id ? null : comment._id)}
               >
@@ -148,16 +155,16 @@ const CommentSection = ({ movieId }) => {
                     <div className={styles.options}>
                       {editingCommentId === comment._id ? (
                         <>
-                          <button onClick={() => handleEditComment(comment._id)}><FaCheck/></button>
-                          <button onClick={() => setEditingCommentId(null)}><FaMinus/></button>
+                          <button onClick={() => handleEditComment(comment._id)}><FaCheck /></button>
+                          <button onClick={() => setEditingCommentId(null)}><FaMinus /></button>
                         </>
                       ) : (
                         <>
                           <button onClick={() => {
                             setEditingCommentId(comment._id);
                             setEditingContent(comment.content); // Đặt nội dung hiện tại để chỉnh sửa
-                          }}><FaPen/></button>
-                          <button onClick={() => handleDeleteComment(comment._id)}><FaRegTrashAlt/></button>
+                          }}><FaPen /></button>
+                          <button onClick={() => handleDeleteComment(comment._id)}><FaRegTrashAlt /></button>
                         </>
                       )}
                     </div>
@@ -173,7 +180,7 @@ const CommentSection = ({ movieId }) => {
           </div>
         ))}
       </div>
-  
+
       {/* Ô nhập bình luận mới */}
       {userId ? (
         <div className={styles.add_comment}>
@@ -184,13 +191,14 @@ const CommentSection = ({ movieId }) => {
             className={styles.commentInput}
           />
           <div className='displayRightRating'>
-            <Rating />
+            
           </div>
           <button onClick={handleAddComment}>Post Comment</button>
         </div>
       ) : (
         <p>Please log in to post a comment.</p> // Thông báo nếu chưa đăng nhập
       )}
+
     </div>
   );
 };

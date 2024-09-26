@@ -7,9 +7,9 @@ import Quocgia from './Pages/Country';
 import Footer from './Components/Footer/Footer';
 import Theloai from './Pages/Category';
 import Movie from './Pages/Movie';
-import Form from './Components/Form/Form';
+// import Form from './Components/Form/Form';
 import AccountInfo from './Components/AccountInfo/AccountInfo';
-import FavoritesList from './Components/Favorite/Favorite';
+import FavoritesList from './Pages/Favorite';
 import Search from './Components/Search/Search';
 import BackToTop from './Components/BackTop/BackToTop';
 import SearchPage from './Pages/SearchPage';
@@ -26,7 +26,7 @@ function App({ user }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
   const [isLoginVisible, setIsLoginVisible] = useState(false);
-  const [isFormVisible, setIsFormVisible] = useState(false);
+  
   
   const showLogin = () => {
     setIsLoginVisible(true);
@@ -36,17 +36,11 @@ function App({ user }) {
     setIsLoginVisible(false);
   };
   
-  const showForm = () => {
-    setIsFormVisible(true);
-  };
 
-  const closeForm = () => {
-    setIsFormVisible(false);
-  };
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const storedUserInfo = localStorage.getItem('userInfo');
+    const storedUserInfo = localStorage.getItem('user');
 
     if (token && storedUserInfo) {
       setIsLoggedIn(true);
@@ -56,14 +50,14 @@ function App({ user }) {
 
   const handleLoginSuccess = (user, token) => {
     localStorage.setItem('token', token);
-    localStorage.setItem('userInfo', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
     setIsLoggedIn(true);
     setUserInfo(user);
   };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('userInfo');
+    localStorage.removeItem('user');
     setIsLoggedIn(false);
     setUserInfo(null);
   };
@@ -73,9 +67,9 @@ function App({ user }) {
       <BrowserRouter>
         <ScrollToTop />
         <div className='Navbar'>
-        <Navbar isLoggedIn={isLoggedIn} userInfo={userInfo} onLogout={handleLogout} showLogin={showLogin} closeLogin={closeLogin} showForm={showForm} closeForm={closeForm} />
+        <Navbar isLoggedIn={isLoggedIn} userInfo={userInfo} onLogout={handleLogout} showLogin={showLogin} closeLogin={closeLogin} />
         {isLoginVisible && <Login onLoginSuccess={handleLoginSuccess} onClose={closeLogin} />}
-        {isFormVisible && <Form onClose={closeForm} />}
+        
         <Search/>
         </div>
         <Routes>

@@ -4,7 +4,7 @@
 	left: 10px; /* Khoảng cách từ bên phải */
 	display: flex;
 	align-items: center;
-	z-index: 1000; /* Để đảm bảo nó hiển thị trên các thành phần khác */
+	z-index: 800; /* Để đảm bảo nó hiển thị trên các thành phần khác */
 	color: white;
   }
   

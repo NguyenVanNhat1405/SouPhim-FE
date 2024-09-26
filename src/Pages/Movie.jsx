@@ -7,7 +7,7 @@ import Comment from '../Components/Comment/Comment';
 import { useNavigate } from 'react-router-dom';
 import AddFavorite from '../Components/AddFavorite/AddFavorite';
 import Share from '../Components/Share/Share';
-
+import Rating from '../Components/Rating/Rating';
 const Movie = () => {
   const { movieId } = useParams(); // Lấy movieId từ URL
   const { movieDb } = useContext(Context); // Lấy movieDb từ Context
@@ -42,9 +42,13 @@ const Movie = () => {
         </div>
         <Share movieName={movie.name} />
         <AddFavorite movie={movie} className={style.favoriteIcon} /> {/* Thêm nút yêu thích */}
+        <div className={style.rating}><Rating imdbRating={movie.imdbRating} title={movie.name} movieId={movie.id} /></div>
       </div>
       <div className={style.date}>
         <p>Phát Hành {movie.release_date} | Thời Lượng {movie.runtime}</p>
+      </div>
+      <div>
+      
       </div>
       <div className={style.box}>
         <div className={style.image}>
@@ -68,13 +72,19 @@ const Movie = () => {
       </div>
       <div className={style.desc}>
         <div>
-          Mô Tả: {movie.desc}
+          {movie.desc}
         </div>
         <div>
-          Đạo Diễn: {movie.director}
+          Director: {movie.director}
         </div>
         <div>
-          Diễn Viên: {movie.actors}
+          Writer: {movie.writer}
+        </div>
+        <div>
+          Stars: {movie.actors.join(', ')}
+        </div>
+        <div>
+          Awards: {movie.award}
         </div>
       </div>
 

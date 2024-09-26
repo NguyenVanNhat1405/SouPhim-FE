@@ -44,12 +44,15 @@ const ContextProvider = (props) => {
                                 movie.production_companies.map(company => typeof company === 'string' ? company : company.name || 'N/A') :
                                 ['Chưa có nhà sản xuất'],
                             director: movie.director || 'Chưa có thông tin đạo diễn',
-                            seasons: Array.isArray(movie.seasons) ? movie.seasons : [],
                             countries: movie.countries,
                             release_date: movie.release_date || 'Chưa có ngày phát hành',
                             runtime: movie.runtime,
                             actors: movie.actors,
                             trailer: movie.trailer,
+                            writer: movie.writer || 'Chưa có thông tin',
+                            award: movie.award || 'Chưa có thông tin',
+                            seasons: movie.seasons,
+                            imdbRating: movie.imdbRating,
                         };
                     });
                 };

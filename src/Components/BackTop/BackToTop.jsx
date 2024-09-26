@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaArrowUp } from 'react-icons/fa';
+import { FaAngleUp } from 'react-icons/fa';
 import style from './BackToTop.module.css';
 
 const BackToTop = () => {
@@ -35,7 +35,7 @@ const BackToTop = () => {
     <div>
       {isVisible && (
         <div className={style.backToTop} onClick={scrollToTop}>
-          <FaArrowUp />
+          <FaAngleUp />
         </div>
       )}
     </div>

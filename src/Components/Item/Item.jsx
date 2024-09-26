@@ -3,7 +3,7 @@ import style from './Item.module.css';
 import { Link } from 'react-router-dom';
 import { Context } from '../../Context/Context';
 import AddFavorite from '../AddFavorite/AddFavorite';
-
+import { FaStar } from 'react-icons/fa';
 const scrollToTop = () => {
   window.scrollTo(0, 0);
 };
@@ -11,7 +11,7 @@ const scrollToTop = () => {
 const Item = ({ id }) => {
   const cardRef = useRef(null);
   const { movieDb } = useContext(Context);
-  
+  console.log(movieDb)
   // Sử dụng useEffect ngay từ đầu
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -41,7 +41,7 @@ const Item = ({ id }) => {
 
   // Tìm phim dựa trên id
   const movie = movieDb.find(movie => String(movie.id) === String(id));
-
+  console.log(movie.imdbRating);
   // Điều kiện trả về sớm sau khi gọi hook
   if (!movie) {
     return null;
@@ -55,7 +55,11 @@ const Item = ({ id }) => {
           <p>{movie.name}</p>
         </div>
       </Link>
-      <AddFavorite movie={movie} className={style.favoriteIcon}/>
+      <AddFavorite movie={movie} className={style.favoriteIcon} />
+      <div className={style.rating}>
+        <span>{movie.imdbRating}</span>
+        <FaStar style={{ fontSize: '15px', color: '#ffd700' }} />
+      </div>
     </div>
   );
 };

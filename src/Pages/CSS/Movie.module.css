@@ -10,7 +10,7 @@
   position: relative;
 }
 .title {
-  font-size: 32px;
+  font-size: 40px;
   padding-top: 20px;
   margin-left: 150px;
 }
@@ -22,7 +22,18 @@
   transition: transform 0.2s ease-in-out;
   z-index: 1000;
 }
+.rating{
+  color: #e7e7e7;
+ margin-top: -35px;
+  display: flex;
+  justify-content: flex-end;
+  width: 88%;
+  z-index: 2; /* Đảm bảo các nút nằm trên video */
+  position: relative
+}
 .date {
+  color: #e7e7e7;
+  margin-top: -55px;
   font-size: 15px;
   margin-left: 150px;
 }
@@ -86,7 +97,7 @@
 }
 .genreButton  {
   display: inline-flexbox; /* Để chiều rộng phụ thuộc vào nội dung */
-  background-color: hsla(211, 44%, 12%, 0.31); 
+  background-color: hsla(211, 34%, 20%, 0.31); 
   color: #fff;
   border: none;
   padding: 10px 15px; /* Điều chỉnh padding để tạo khoảng cách bên trong */

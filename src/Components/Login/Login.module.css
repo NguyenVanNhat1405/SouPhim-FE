@@ -27,7 +27,7 @@
     max-width: 100%;
     min-height: 480px;
     color: #333;
-    z-index: 9999; /* Thay đổi z-index */
+    z-index: 999; /* Thay đổi z-index */
 }
 
 .container p {
@@ -35,8 +35,8 @@
     line-height: 20px;
     letter-spacing: 0.3px;
     margin: 20px 20px;
-    padding-left: 20px;
-    color: #333;
+   
+    color: black;
 }
 
 .container span {
@@ -45,39 +45,66 @@
 }
 
 .container h1 {
-    color: #333;
+    color: black;
     font-size: 20px;
     font-weight: 14;
-    justify-content: center;
+    /* justify-content: center; */
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     margin: 20px 20px;
-    padding-left: 20px;
+    /* padding-left: 20px; */
 }
 
 .container a {
-    color: #333;
+    color: white;
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;
 }
 
 .container button {
+    display: inline-block;
     background-color: #212a37;
     color: white;
-    font-size: 12px;
+    font-size: 15px;
     border: 1px solid transparent;  
     border-radius: 8px;
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    margin-top: 10px;
+   padding: 5px;
     cursor: pointer;
 }
-
+/* Thêm CSS cho thông báo */
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 10000;
+    text-align: center;
+    font-size: 18px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .notification.success {
+    background-color: rgb(19, 152, 19);
+    z-index: 10000;
+  }
+  
+  .notification.error {
+    background-color: red;
+    z-index: 10000;
+  }
+  
 .container button.hidden {
     background-color: transparent;
-    border-color: #fff;
+    color: black;
 }
 
 .container form {
@@ -88,7 +115,7 @@
     flex-direction: column;
     padding: 0 40px;
     height: 100%;
-    color: #333;
+    color: white;
 }
 
 .container input {
@@ -202,7 +229,7 @@
 }
 
 .togglePanel {
-    position: absolute;
+    /* position: absolute; */
     width: 50%;
     height: 100%;
     display: flex;

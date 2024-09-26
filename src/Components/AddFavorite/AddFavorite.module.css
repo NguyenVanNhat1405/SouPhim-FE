@@ -6,7 +6,7 @@
     height: 24px;
     cursor: pointer;
     transition: transform 0.3s ease;
-    z-index: 1000;
+    z-index: 800;
     color: white
   }
   

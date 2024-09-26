@@ -12,11 +12,11 @@ function Navbar({ showLogin, closeLogin, showForm, closeForm }) {
   const [userInfo, setUserInfo] = useState(null);
 
   const TOKEN_KEY = 'token';
-  const USER_INFO = 'userInfo';
+  const USER_INFO = 'user';
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const storedUserInfo = localStorage.getItem('userInfo');
+    const storedUserInfo = localStorage.getItem('user');
 
     if (token && storedUserInfo) {
       try {
@@ -40,6 +40,9 @@ function Navbar({ showLogin, closeLogin, showForm, closeForm }) {
   const handleLogout = () => {
     localStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(USER_INFO);
+    // Khi đăng xuất, xóa thông tin người dùng khỏi localStorage
+    localStorage.removeItem('user');
+
     setIsLoggedIn(false);
     setUserInfo(null);
     window.location.reload()

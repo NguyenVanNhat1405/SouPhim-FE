@@ -49,36 +49,36 @@ const AccountInfo = () => {
 
   return (
     <div className={styles.account}>
-        <div className={styles.accountInfo}>
-      <h1>Thông tin tài khoản</h1>
-      {message && <p className={styles.message}>{message}</p>}
-      {isEditing ? (
-        <div className={styles.editForm}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Tên"
-            value={formData.name}
-            onChange={handleInputChange}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleInputChange}
-          />
-          <button onClick={handleSave}>Lưu</button>
-          <button onClick={() => setIsEditing(false)}>Hủy</button>
-        </div>
-      ) : (
-        <div className={styles.info}>
-          <p><strong>Tên:</strong> {userInfo.name}</p>
-          <p><strong>Email:</strong> {userInfo.email}</p>
-          <button onClick={handleEdit}>Chỉnh sửa</button>
-        </div>
-      )}
-    </div>
+      <div className={styles.accountInfo}>
+        <h1>Thông tin tài khoản</h1>
+        {message && <p className={styles.message}>{message}</p>}
+        {isEditing ? (
+          <div className={styles.editForm}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Tên"
+              value={formData.name}
+              onChange={handleInputChange}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleInputChange}
+            />
+            <button onClick={handleSave}>Lưu</button>
+            <button onClick={() => setIsEditing(false)}>Hủy</button>
+          </div>
+        ) : (
+          <div className={styles.info}>
+            <p><strong>Tên:</strong> {userInfo.name}</p>
+            <p><strong>Email:</strong> {userInfo.email}</p>
+            <button onClick={handleEdit}>Chỉnh sửa</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
