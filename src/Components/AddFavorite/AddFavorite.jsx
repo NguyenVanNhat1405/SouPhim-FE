@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import style from './AddFavorite.module.css';
-// import { Context } from '../../Context/Context';
 
-const AddFavorite = ({ movie, showLogin }) => {
+const AddFavorite = ({ movie }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-//   const { movieDb } = useContext(Context);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -18,7 +16,10 @@ const AddFavorite = ({ movie, showLogin }) => {
   const handleFavorite = async (movie) => {
     const token = localStorage.getItem('token');
     if (!token) {
-      showLogin();
+      setTimeout(() => {
+        alert("Vui lòng đăng nhập!!");
+        window.location.reload();
+      }, 500);
       return;
     }
 
@@ -30,9 +31,9 @@ const AddFavorite = ({ movie, showLogin }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          itemId: movie.id,
+          itemId: movie.id,   // Ensure this matches the backend model
           name: movie.name,
-          imageUrl: movie.image,
+          imageUrl: movie.image,  // Ensure consistency in field names
         }),
       });
 
@@ -51,7 +52,6 @@ const AddFavorite = ({ movie, showLogin }) => {
   const removeFavorite = async (movie) => {
     const token = localStorage.getItem('token');
     if (!token) {
-      showLogin();
       return;
     }
 

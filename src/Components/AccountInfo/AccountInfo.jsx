@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import styles from './AccountInfo.module.css';
 
 const AccountInfo = () => {
-  const [userInfo, setUserInfo] = useState({ name: '', email: '' });
+  const [userInfo, setUserInfo] = useState({ username: '', email: '' });
   const [isEditing, setIsEditing] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '' });
+  const [formData, setFormData] = useState({ username: '', email: '' });
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    // Giả sử thông tin người dùng được lưu trữ trong localStorage
-    const user = JSON.parse(localStorage.getItem('userInfo'));
+    // Lấy thông tin người dùng từ localStorage
+    const user = JSON.parse(localStorage.getItem('user'));
     if (user) {
       setUserInfo(user);
-      setFormData({ name: user.name, email: user.email });
+      setFormData({ username: user.username, email: user.email });
     }
   }, []);
 
@@ -27,10 +27,12 @@ const AccountInfo = () => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/user/update', {
+      const token = localStorage.getItem('token'); // Lấy token từ localStorage
+      const response = await fetch('http://localhost:5000/api/auth/update', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, // Thêm token vào header
         },
         body: JSON.stringify(formData),
       });
@@ -40,12 +42,14 @@ const AccountInfo = () => {
         setMessage('Cập nhật thành công!');
         setIsEditing(false);
       } else {
-        setMessage(data.message || 'Đã xảy ra lỗi.');
+        setMessage(data.msg || 'Đã xảy ra lỗi.');
       }
     } catch (error) {
       setMessage('Đã xảy ra lỗi.');
     }
   };
+  
+  
 
   return (
     <div className={styles.account}>
@@ -56,9 +60,9 @@ const AccountInfo = () => {
           <div className={styles.editForm}>
             <input
               type="text"
-              name="name"
+              name="username" // Đảm bảo trường name là 'username' để khớp với formData
               placeholder="Tên"
-              value={formData.name}
+              value={formData.username}
               onChange={handleInputChange}
             />
             <input
@@ -73,7 +77,7 @@ const AccountInfo = () => {
           </div>
         ) : (
           <div className={styles.info}>
-            <p><strong>Tên:</strong> {userInfo.name}</p>
+            <p><strong>Tên:</strong> {userInfo.username}</p>
             <p><strong>Email:</strong> {userInfo.email}</p>
             <button onClick={handleEdit}>Chỉnh sửa</button>
           </div>

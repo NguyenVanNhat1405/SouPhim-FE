@@ -89,3 +89,12 @@
 .remove_rating_button:hover {
   color: darkred;
 }
+.closeFr{
+  display: flex;
+  border: none;
+  background-color: white;
+  margin-top: -18px;
+  margin-right: -15px;
+  padding-left: 450px;
+  font-size: 20px;
+}

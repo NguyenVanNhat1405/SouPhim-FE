@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router-dom';
 import AddFavorite from '../Components/AddFavorite/AddFavorite';
 import Share from '../Components/Share/Share';
 import Rating from '../Components/Rating/Rating';
+import WatchHistory from '../Components/History/History';
+import Recommendations from '../Components/Recommendations/Recommendaion';
+
 const Movie = () => {
   const { movieId } = useParams(); // Lấy movieId từ URL
   const { movieDb } = useContext(Context); // Lấy movieDb từ Context
@@ -17,6 +20,7 @@ const Movie = () => {
   }
 
   const movie = movieDb.find((e) => e.id === movieId); // Giả sử id trong movieDb là string
+
   if (!movie) {
     return <div className={style.background}>Không tìm thấy phim</div>;
   }
@@ -59,13 +63,13 @@ const Movie = () => {
         </div>
       </div>
       <div className={style.genres}>
-        {movie.genres && movie.genres.map((genre) => (
-          <button key={genre.id} onClick={() => handleGenreClick(genre)} className={style.genreButton}>
+        {movie.genres && movie.genres.map((genre, item) => (
+          <button key={item} onClick={() => handleGenreClick(genre)} className={style.genreButton}>
             {genre}
           </button>
         ))}
-        {movie.countries && movie.countries.map((country) => (
-          <button key={country.id} onClick={() => handleCountyClick(country)} className={style.genreButton}>
+        {movie.countries && movie.countries.map((country,item) => (
+          <button key={item} onClick={() => handleCountyClick(country)} className={style.genreButton}>
             {country}
           </button>
         ))}
@@ -89,6 +93,8 @@ const Movie = () => {
       </div>
 
       <Comment movieId={movie.id} />
+      <Recommendations movieId={movie.id} />
+      <WatchHistory/>
     </div>
   );
 };

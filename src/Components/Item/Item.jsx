@@ -4,14 +4,11 @@ import { Link } from 'react-router-dom';
 import { Context } from '../../Context/Context';
 import AddFavorite from '../AddFavorite/AddFavorite';
 import { FaStar } from 'react-icons/fa';
-const scrollToTop = () => {
-  window.scrollTo(0, 0);
-};
+
 
 const Item = ({ id }) => {
   const cardRef = useRef(null);
   const { movieDb } = useContext(Context);
-  console.log(movieDb)
   // Sử dụng useEffect ngay từ đầu
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -41,15 +38,47 @@ const Item = ({ id }) => {
 
   // Tìm phim dựa trên id
   const movie = movieDb.find(movie => String(movie.id) === String(id));
-  console.log(movie.imdbRating);
   // Điều kiện trả về sớm sau khi gọi hook
   if (!movie) {
     return null;
   }
+  const handleMovieClick = async (movie) => {
+    window.scrollTo(0, 0);
+    const token = localStorage.getItem('token');
+    if (!token) return;
+  
+    try {
+      // Chỉ truyền các dữ liệu cần thiết
+      const bodyData = {
+        itemId: movie.id,
+        name: movie.name,
+        imageUrl: movie.image,
+      };
+  
+      const response = await fetch('http://localhost:5000/api/history/add', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bodyData), // Chuyển đổi đối tượng chỉ chứa dữ liệu cần thiết
+      });
+  
+      if (response.ok) {
+        // Chuyển hướng đến trang chi tiết phim
+        window.location.href = `/Movie/${movie.id}`;
+      } else {
+        console.error('Lỗi khi thêm lịch sử xem');
+      }
+    } catch (error) {
+      console.error('Lỗi kết nối API:', error);
+    }
+  };
+  
 
   return (
     <div className={style.card} ref={cardRef}>
-      <Link to={`/Movie/${movie.id}`} onClick={scrollToTop}>
+      <Link onClick={() => handleMovieClick(movie)}>
         <div className={style.cardImage} style={{ backgroundImage: `url(${movie.image})` }}></div>
         <div className={style.cardInfo}>
           <p>{movie.name}</p>

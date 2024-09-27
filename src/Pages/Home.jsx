@@ -7,6 +7,7 @@ import image1 from '../Components/Assets/banner/1.png';
 import image2 from '../Components/Assets/banner/2.png';
 import image3 from '../Components/Assets/banner/3.png';
 import Search from '../Components/Search/Search';
+import WatchHistory from '../Components/History/History';
 const images = [image1, image2, image3]; // Moved images declaration here
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <New/>
       <Popular />
      </div>
+     <WatchHistory/>
     </div>
   )
 }

@@ -1,47 +1,53 @@
 import React, { useState, useEffect } from 'react';
+import style from './WatchHistory.module.css'; // Tạo file CSS tương ứng nếu chưa có
+import Item from '../Item/Item'; // Nếu cần hiển thị đánh giá
 
-const saveToLocalStorage = (key, value) => {
-    localStorage.setItem(key, JSON.stringify(value));
-  };
-  
-  const loadFromLocalStorage = (key) => {
-    const data = localStorage.getItem(key);
-    return data ? JSON.parse(data) : [];
-  };
-  
 const WatchHistory = () => {
-  const [history, setHistory] = useState([]);
+  const [watchHistory, setWatchHistory] = useState([]);
 
   useEffect(() => {
-    const savedHistory = loadFromLocalStorage('watchHistory');
-    setHistory(savedHistory);
+    const token = localStorage.getItem('token');
+    if (!token) return;
+
+    const fetchHistory = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/history/get', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setWatchHistory(data.slice(0, 4));
+        } else {
+          console.error('Lỗi khi lấy lịch sử xem');
+        }
+      } catch (error) {
+        console.error('Lỗi kết nối API:', error);
+      }
+    };
+
+    fetchHistory();
   }, []);
 
-  const addToHistory = (newItem) => {
-    const updatedHistory = [newItem, ...history];
-    setHistory(updatedHistory);
-    saveToLocalStorage('watchHistory', updatedHistory);
-  };
-
   return (
-    <div>
-      <h2>Lịch sử xem</h2>
-      {history.length === 0 ? (
-        <p>Chưa có lịch sử xem.</p>
-      ) : (
-        <ul>
-          {history.map((item, index) => (
-            <li key={index}>
-              <img src={item.thumbnail} alt={item.title} />
-              <div>
-                <h3>{item.title}</h3>
-                <p>Đã xem vào: {new Date(item.watchedAt).toLocaleString()}</p>
-                <p>Tiến độ: {item.progress}%</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className={style.historyContainer}>
+      <h1>Truy cập gần đây</h1>
+      <div className={style.historyList}>
+        {watchHistory.map((item) => (
+          <div className={style.card} key={item.itemId}>
+            <Item
+                id={item.itemId}
+                name={item.name} // Sử dụng name thay vì title
+                image={item.imageUrl} // Sử dụng image từ item
+              />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
+
+export default WatchHistory;

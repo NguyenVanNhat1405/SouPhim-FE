@@ -115,7 +115,7 @@ function Navbar({ showLogin, closeLogin, showForm, closeForm }) {
                     {showOption && (
                       <div className={style.dropdown}>
                         <ul>
-                          <li><Link to="/accountInfor">Tài Khoản</Link></li>
+                          <li><Link to="/information">Thông Tin</Link></li>
                           <li><Link to="/favoritesList">Yêu Thích</Link></li>
                           <li onClick={handleLogout} style={{ cursor: 'pointer' }}>Đăng Xuất</li>
                         </ul>

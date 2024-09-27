@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaStar } from 'react-icons/fa';
 import style from './Rating.module.css';
 
-const Rating = ({ imdbRating, title, movieId }) => {
+const Rating = ({ imdbRating, title, movieId, onClose }) => {
   const [userRating, setUserRating] = useState(0); // Đánh giá của người dùng
   const [showForm, setShowForm] = useState(false); // Trạng thái hiển thị form đánh giá
 
@@ -11,22 +11,36 @@ const Rating = ({ imdbRating, title, movieId }) => {
     const fetchUserRating = async () => {
       const storedUser = JSON.parse(localStorage.getItem('user'));
       const userId = storedUser ? storedUser.id : null;
-
-      if (!userId) return;
-
+  
+      // Nếu không có userId hoặc movieId, gán userRating về 0 và thoát khỏi hàm
+      if (!userId || !movieId) {
+        setUserRating(0);
+        return;
+      }
+  
       try {
         const response = await fetch(`http://localhost:5000/api/ratings/${userId}/${movieId}`);
         if (response.ok) {
           const data = await response.json();
-          setUserRating(data.rating); // Gán rating lấy từ backend
+          setUserRating(data.rating || 0); // Gán rating lấy từ backend hoặc 0 nếu không có
+        } else {
+          // Nếu không tìm thấy (404), cũng gán userRating về 0
+          if (response.status === 404) {
+            setUserRating(0);
+          } else {
+            console.error('Failed to fetch user rating:', response.statusText);
+          }
         }
       } catch (error) {
         console.error('Error fetching rating:', error);
+        setUserRating(0); // Đặt về 0 khi có lỗi kết nối
       }
     };
-
+  
     fetchUserRating();
   }, [movieId]); // Chỉ chạy lại nếu movieId thay đổi
+  
+   // Chỉ chạy lại nếu movieId thay đổi
 
   const handleStarClick = (value) => {
     setUserRating(value); // Cập nhật đánh giá của người dùng
@@ -38,7 +52,9 @@ const Rating = ({ imdbRating, title, movieId }) => {
     const storedUser = JSON.parse(localStorage.getItem('user')); // Lấy user từ localStorage
     const userId = storedUser ? storedUser.id : null;
 
-    if (!userId || !userRating) return;
+    if (!userId || !userRating) 
+      
+      return;
 
     try {
       const response = await fetch('http://localhost:5000/api/ratings', {
@@ -50,15 +66,24 @@ const Rating = ({ imdbRating, title, movieId }) => {
           rating: userRating,
         }),
       });
+       
 
       if (response.ok) {
         setShowForm(false); // Đóng form sau khi gửi
       } else {
+        alert("đăng nhập")
         const errorData = await response.json();
         console.error('Failed to save rating:', errorData);
+        
       }
     } catch (error) {
       console.error('Error saving rating:', error);
+    }
+  };
+  const handleClose = () => {
+    setShowForm(false);
+    if (onClose) {
+      onClose();
     }
   };
 
@@ -98,6 +123,7 @@ const Rating = ({ imdbRating, title, movieId }) => {
       {showForm && (
         <div className={style.overlay}>
           <div className={style.rating_form}>
+            <button className={style.closeFr} onClick={handleClose}>x</button>
             <h2>Rate Movie {title}</h2>
             <div className={style.stars_container}>
               {[...Array(10)].map((_, index) => (

@@ -16,11 +16,12 @@ const countryMap = {
  
 };
 
-const Quocgia = ({ quocgia, showLogin }) => {
+const Quocgia = ({ quocgia }) => {
   const { movieDb } = useContext(Context); // Lấy all_img từ Context
 
   // Tìm tên quốc gia bằng map, nếu không có thì gán là "Khác"
   const vietnameseCountry = countryMap[quocgia] || 'Khác';
+  
 
   // Lọc các phim có cùng quốc gia hoặc thuộc "Khác"
   const filteredMovies = movieDb.filter(item => {
@@ -36,7 +37,7 @@ const Quocgia = ({ quocgia, showLogin }) => {
       <div className={style.category}>
         {filteredMovies.length > 0 ? (
           filteredMovies.map((item) => (
-            <Item showLogin={showLogin}
+            <Item 
               key={item.id} 
               id={item.id} 
               name={item.name} 

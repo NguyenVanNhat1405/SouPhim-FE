@@ -15,7 +15,7 @@ const categoryMap = {
   "Family": "Gia Đình",
   "Fantasy": "Chuyển Thể"
 };
-const Theloai = ({ theloai, showLogin }) => {
+const Theloai = ({ theloai }) => {
   const { movieDb } = useContext(Context); 
   const vietnameseCate = categoryMap[theloai]
   // Lọc các ảnh dựa trên thể loại phim
@@ -25,6 +25,7 @@ const Theloai = ({ theloai, showLogin }) => {
     return !movieCate ===vietnameseCate || (item.genres && item.genres.includes(theloai));
     
   });
+  
 
   return (
     <div className={style.img}>
@@ -34,7 +35,7 @@ const Theloai = ({ theloai, showLogin }) => {
       <div className={style.category}>
         {filteredImages.length > 0 ? (
           filteredImages.map((item) => (
-            <Item key={item} showLogin={showLogin}
+            <Item key={item.id}
             id={item.id} 
             name={item.name} 
             image={item.image} 

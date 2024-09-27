@@ -8,7 +8,7 @@ import Footer from './Components/Footer/Footer';
 import Theloai from './Pages/Category';
 import Movie from './Pages/Movie';
 // import Form from './Components/Form/Form';
-import AccountInfo from './Components/AccountInfo/AccountInfo';
+import Information from './Pages/Information';
 import FavoritesList from './Pages/Favorite';
 import Search from './Components/Search/Search';
 import BackToTop from './Components/BackTop/BackToTop';
@@ -61,6 +61,7 @@ function App({ user }) {
     setIsLoggedIn(false);
     setUserInfo(null);
   };
+  
 
   return (
     <div>
@@ -72,7 +73,7 @@ function App({ user }) {
         
         <Search/>
         </div>
-        <Routes>
+        <Routes >
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage/>} />
           {/* Thể loại */}
@@ -99,7 +100,7 @@ function App({ user }) {
           <Route path="/quocgia/khac" element={<Quocgia quocgia="Khác"til="Khác" />} />
           {/* Các trang khác */}
           <Route path="/favoritesList" element={<FavoritesList user={user} />} />
-          <Route path="/accountInfor" element={<AccountInfo />} />
+          <Route path="/information" element={<Information />} />
           <Route path='/Movie/:movieId' element={<Movie/>} />
         </Routes>
         <BackToTop />
