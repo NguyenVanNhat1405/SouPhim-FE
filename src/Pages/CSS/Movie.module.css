@@ -10,6 +10,7 @@
   position: relative;
 }
 .title {
+  color: #feca57;
   font-size: 40px;
   padding-top: 20px;
   margin-left: 150px;
@@ -98,7 +99,7 @@
 .genreButton  {
   display: inline-flexbox; /* Để chiều rộng phụ thuộc vào nội dung */
   background-color: hsla(211, 34%, 20%, 0.31); 
-  color: #fff;
+  color: #feca57;
   border: none;
   padding: 10px 15px; /* Điều chỉnh padding để tạo khoảng cách bên trong */
   border-radius: 15px;

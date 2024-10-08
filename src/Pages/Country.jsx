@@ -24,9 +24,9 @@ const Quocgia = ({ quocgia }) => {
   
 
   // Lọc các phim có cùng quốc gia hoặc thuộc "Khác"
-  const filteredMovies = movieDb.filter(item => {
-    const movieCountry = countryMap[item.countries] || 'Khác';
-    return movieCountry === vietnameseCountry|| (item.countries && item.countries.includes(quocgia));
+  const filteredMovies = movieDb.filter(movie => {
+    const movieCountry = countryMap[movie.countries] || 'Khác';
+    return movieCountry === vietnameseCountry|| (movie.countries && movie.countries.includes(quocgia));
   });
   return (
     <div className={style.img}>
@@ -36,12 +36,12 @@ const Quocgia = ({ quocgia }) => {
       <div className={style.Indeximg}></div>
       <div className={style.category}>
         {filteredMovies.length > 0 ? (
-          filteredMovies.map((item) => (
+          filteredMovies.map((movie) => (
             <Item 
-              key={item.id} 
-              id={item.id} 
-              name={item.name} 
-              image={item.image} 
+              key={movie.id} 
+              id={movie.id} 
+              name={movie.name} 
+              image={movie.image} 
               />
           ))
         ) : (

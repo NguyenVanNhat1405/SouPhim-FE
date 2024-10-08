@@ -23,7 +23,9 @@
   border-radius: 5px;
   padding: 10px;
   background-color: #fff; /* Màu nền cho danh sách bình luận */
-  position: relative; /* Để xác định vị trí của các phần tử bên trong */
+  max-width: 600px;
+  position: relative;
+   /* Để xác định vị trí của các phần tử bên trong */
 }
 
 
@@ -42,6 +44,10 @@
 }
 
 .commentContent {
+  max-width: 500px;
+  word-wrap: break-word; /* Đảm bảo văn bản dài tự động xuống dòng */
+  word-break: break-word;
+  
   flex: 1; /* Chiếm toàn bộ chiều rộng còn lại */
   margin-right: 10px; /* Khoảng cách bên phải cho biểu tượng ba chấm */
 }
@@ -50,6 +56,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: normal;
   max-width: 100%; /* Đảm bảo không vượt quá chiều rộng của container */
 }
 

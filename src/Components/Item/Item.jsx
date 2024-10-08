@@ -5,11 +5,11 @@ import { Context } from '../../Context/Context';
 import AddFavorite from '../AddFavorite/AddFavorite';
 import { FaStar } from 'react-icons/fa';
 
-
 const Item = ({ id }) => {
   const cardRef = useRef(null);
   const { movieDb } = useContext(Context);
-  // Sử dụng useEffect ngay từ đầu
+
+  // Sử dụng useEffect để theo dõi sự xuất hiện của phần tử
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -38,23 +38,30 @@ const Item = ({ id }) => {
 
   // Tìm phim dựa trên id
   const movie = movieDb.find(movie => String(movie.id) === String(id));
+
   // Điều kiện trả về sớm sau khi gọi hook
   if (!movie) {
     return null;
   }
-  const handleMovieClick = async (movie) => {
+
+  const handleMovieClick = async () => {
     window.scrollTo(0, 0);
     const token = localStorage.getItem('token');
-    if (!token) return;
-  
+    
+    // Nếu không có token, chỉ cần chuyển hướng đến trang chi tiết phim
+    if (!token) {
+      window.location.href = `/Movie/${movie.id}`;
+      return;
+    }
+
     try {
       // Chỉ truyền các dữ liệu cần thiết
       const bodyData = {
-        itemId: movie.id,
+        movieId: movie.id,
         name: movie.name,
         imageUrl: movie.image,
       };
-  
+
       const response = await fetch('http://localhost:5000/api/history/add', {
         method: 'POST',
         headers: {
@@ -63,7 +70,7 @@ const Item = ({ id }) => {
         },
         body: JSON.stringify(bodyData), // Chuyển đổi đối tượng chỉ chứa dữ liệu cần thiết
       });
-  
+
       if (response.ok) {
         // Chuyển hướng đến trang chi tiết phim
         window.location.href = `/Movie/${movie.id}`;
@@ -74,11 +81,10 @@ const Item = ({ id }) => {
       console.error('Lỗi kết nối API:', error);
     }
   };
-  
 
   return (
     <div className={style.card} ref={cardRef}>
-      <Link onClick={() => handleMovieClick(movie)}>
+      <Link onClick={handleMovieClick}>
         <div className={style.cardImage} style={{ backgroundImage: `url(${movie.image})` }}></div>
         <div className={style.cardInfo}>
           <p>{movie.name}</p>

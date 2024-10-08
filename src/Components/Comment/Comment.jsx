@@ -1,25 +1,28 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import styles from './Comment.module.css'; // Đảm bảo bạn có file CSS này để định kiểu
-import { formatDistanceToNow } from 'date-fns'; // Thư viện format ngày tháng
-import { FaEllipsisV, FaPen, FaRegTrashAlt, FaMinus, FaCheck } from 'react-icons/fa'; // Import biểu tượng ba chấm
+import styles from './Comment.module.css';
+import { formatDistanceToNow } from 'date-fns';
+import { FaEllipsisV, FaPen, FaRegTrashAlt, FaMinus, FaCheck } from 'react-icons/fa';
+import { } from 'bad-words';
 
 
-const CommentSection = ({ movieId }) => {
+const CommentSection = ({ movieId, title }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
-  const [userId, setUserId] = useState(null); // Khởi tạo state cho userId
-  const [showOptions, setShowOptions] = useState(null); // State cho hiển thị tùy chọn
-  const [editingCommentId, setEditingCommentId] = useState(null); // State để lưu id của comment đang được chỉnh sửa
-  const [editingContent, setEditingContent] = useState(''); // State để lưu nội dung khi chỉnh sửa
+  const [showOptions, setShowOptions] = useState(null);
+  const [editingCommentId, setEditingCommentId] = useState(null);
+  const [editingContent, setEditingContent] = useState('');
 
-  // Lấy userId và username từ localStorage khi component mount
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user')); // Get the full user object
-    if (storedUser && storedUser.id) {
-      setUserId(storedUser.id); // Set userId từ user object
-    }
-  }, []);
+  const token = localStorage.getItem('token');
+  const storedUser = JSON.parse(localStorage.getItem('user'));
+  const userId = storedUser ? storedUser.id : null;
+  const username = storedUser ? storedUser.username : 'Unknown';
 
+  // Khởi tạo bộ lọc bad-words
+  
+  const badWords = ['chó', 'khùng', 'xấu', 'bẩn', 'ngu']
+  const isProfane = (text) => {
+    return badWords.some((word) => text.toLowerCase().includes(word));
+  };
   const fetchComments = useCallback(async () => {
     if (!movieId) {
       console.error('movieId is undefined or null');
@@ -27,7 +30,7 @@ const CommentSection = ({ movieId }) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/comments?movieId=${movieId}`);
+      const response = await fetch(`http://localhost:5000/api/comments/get?movieId=${movieId}`);
       const data = await response.json();
       if (Array.isArray(data)) {
         setComments(data);
@@ -38,77 +41,101 @@ const CommentSection = ({ movieId }) => {
     } catch (error) {
       console.error('Error fetching comments:', error);
     }
+    console.log('Received movieId:', movieId);
+
   }, [movieId]);
 
   useEffect(() => {
-    fetchComments(); // Fetch comments khi component mount
+    fetchComments();
   }, [fetchComments]);
 
-  // Hàm thêm bình luận mới
+  // Add new comment
   const handleAddComment = async () => {
-    // Kiểm tra xem người dùng đã đăng nhập chưa
-    if (!userId) {
-      alert('Bạn phải đăng nhập để đăng bình luận.');
+    if (!token || !userId) {
+      alert('Please log in to post a comment.');
       return;
     }
 
-    if (!newComment.trim()) return; // Ngăn chặn bình luận rỗng
+    // Kiểm tra comment có chứa từ ngữ không phù hợp
+    if (isProfane(newComment)) {
+      alert('Bình luận của bạn chứa từ ngữ không phù hợp. Vui lòng sửa lại.');
+      return;
+    }
+    
 
-    const storedUser = JSON.parse(localStorage.getItem('user')); // Lấy user từ localStorage
-    const username = storedUser ? storedUser.username : 'Unknown'; // Lấy tên người dùng
+    if (!newComment.trim()) return; // Prevent empty comments
 
     try {
-      const response = await fetch('http://localhost:5000/api/comments', {
+      const response = await fetch('http://localhost:5000/api/comments/add', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
         body: JSON.stringify({
           movieId,
           userId,
           username,
           content: newComment,
+          // title,
         }),
       });
 
       if (response.ok) {
-        fetchComments(); // Làm mới bình luận sau khi thêm
-        setNewComment(''); // Xóa ô nhập
+        fetchComments();
+        setNewComment('');
       } else {
         const errorData = await response.json();
-        console.error('Failed to add comment:', errorData); // Ghi log thông tin lỗi
+        console.error('Failed to add comment:', errorData);
       }
     } catch (error) {
       console.error('Error adding comment:', error);
-    }
+    }console.log('fetchComments')
   };
 
-
-  // Hàm xóa bình luận
+  // Delete comment
   const handleDeleteComment = async (commentId) => {
+    if (!token) return;
+
     try {
-      const response = await fetch(`http://localhost:5000/api/comments/${commentId}`, {
+      const response = await fetch(`http://localhost:5000/api/comments/delete/${commentId}`, {
         method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
       });
 
       if (response.ok) {
-        fetchComments(); // Làm mới danh sách bình luận
+        fetchComments();
       }
     } catch (error) {
       console.error('Error deleting comment:', error);
     }
   };
 
-  // Hàm chỉnh sửa bình luận
+  // Edit comment
   const handleEditComment = async (commentId) => {
+    if (!token) return;
+
+    // Kiểm tra nội dung chỉnh sửa có chứa từ cấm
+    if (isProfane(editingContent)) {
+      alert('Bình luận chứa từ cấm');
+      return;
+    }
+
     try {
-      const response = await fetch(`http://localhost:5000/api/comments/${commentId}`, {
+      const response = await fetch(`http://localhost:5000/api/comments/edit/${commentId}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
         body: JSON.stringify({ content: editingContent }),
       });
 
       if (response.ok) {
-        setEditingCommentId(null); // Đóng chế độ chỉnh sửa sau khi lưu
-        fetchComments(); // Làm mới danh sách bình luận
+        setEditingCommentId(null);
+        fetchComments();
       }
     } catch (error) {
       console.error('Error editing comment:', error);
@@ -119,7 +146,6 @@ const CommentSection = ({ movieId }) => {
     <div className={styles.commentsection}>
       <h3>Comments</h3>
 
-      {/* Hiển thị danh sách bình luận */}
       <div className={styles.commentlist}>
         {comments.map((comment) => (
           <div key={comment._id} className={styles.commentitem}>
@@ -127,14 +153,12 @@ const CommentSection = ({ movieId }) => {
               <strong>{comment.username}</strong>
 
               {editingCommentId === comment._id ? (
-                // Nếu đang ở chế độ chỉnh sửa, hiển thị ô nhập liệu
                 <textarea
                   value={editingContent}
                   onChange={(e) => setEditingContent(e.target.value)}
                   className={styles.editingInput}
                 />
               ) : (
-                // Nếu không, hiển thị nội dung bình luận
                 <p>{comment.content}</p>
               )}
             </div>
@@ -148,40 +172,29 @@ const CommentSection = ({ movieId }) => {
               >
                 <FaEllipsisV />
               </span>
-              {/* Hiển thị tùy chọn nếu userId khớp */}
-              {showOptions === comment._id && (
-                <>
-                  {userId && comment.userId === userId ? (
-                    <div className={styles.options}>
-                      {editingCommentId === comment._id ? (
-                        <>
-                          <button onClick={() => handleEditComment(comment._id)}><FaCheck /></button>
-                          <button onClick={() => setEditingCommentId(null)}><FaMinus /></button>
-                        </>
-                      ) : (
-                        <>
-                          <button onClick={() => {
-                            setEditingCommentId(comment._id);
-                            setEditingContent(comment.content); // Đặt nội dung hiện tại để chỉnh sửa
-                          }}><FaPen /></button>
-                          <button onClick={() => handleDeleteComment(comment._id)}><FaRegTrashAlt /></button>
-                        </>
-                      )}
-                    </div>
+              {showOptions === comment._id && userId && comment.userId === userId && (
+                <div className={styles.options}>
+                  {editingCommentId === comment._id ? (
+                    <>
+                      <button onClick={() => handleEditComment(comment._id)}><FaCheck /></button>
+                      <button onClick={() => setEditingCommentId(null)}><FaMinus /></button>
+                    </>
                   ) : (
-                    <div className={styles.timeOnly}>
-                      {/* Chỉ hiển thị thời gian nếu không phải là chủ sở hữu comment */}
-                      <span>{formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}</span>
-                    </div>
+                    <>
+                      <button onClick={() => {
+                        setEditingCommentId(comment._id);
+                        setEditingContent(comment.content);
+                      }}><FaPen /></button>
+                      <button onClick={() => handleDeleteComment(comment._id)}><FaRegTrashAlt /></button>
+                    </>
                   )}
-                </>
+                </div>
               )}
             </div>
           </div>
         ))}
       </div>
 
-      {/* Ô nhập bình luận mới */}
       {userId ? (
         <div className={styles.add_comment}>
           <textarea
@@ -190,15 +203,11 @@ const CommentSection = ({ movieId }) => {
             placeholder="Add a comment..."
             className={styles.commentInput}
           />
-          <div className='displayRightRating'>
-            
-          </div>
           <button onClick={handleAddComment}>Post Comment</button>
         </div>
       ) : (
-        <p>Please log in to post a comment.</p> // Thông báo nếu chưa đăng nhập
+        <p>Please log in to post a comment.</p>
       )}
-
     </div>
   );
 };

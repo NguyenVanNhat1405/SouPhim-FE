@@ -1,0 +1,83 @@
+.favorite {
+  background-color: #060d10;
+  min-height: 100vh; /* Đảm bảo chiếm toàn bộ chiều cao trang */
+
+}
+
+.favoritesList {
+  padding-top: 20px;
+}
+
+.topic h1 {
+  padding-top: 80px;
+  display: flex;
+  font-size: 32px;
+  color: #feca57;
+  margin-bottom: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.favoritesList ul {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 50%px;
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #3b4b70;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.item:hover {
+  background-color: #354052; /* Hiệu ứng khi hover */
+}
+
+.item img {
+  width: 100px; /* Kích thước hình ảnh */
+  height: 140px; /* Đặt chiều cao để giữ tỉ lệ */
+  object-fit: cover; /* Giữ tỉ lệ hình ảnh */
+  margin-right: 15px;
+  border-radius: 6px; /* Bo góc hình ảnh */
+}
+
+.item p {
+  margin: 0;
+  flex-grow: 1; /* Chiếm không gian còn lại */
+}
+
+.item button {
+  background-color: #ff4757; /* Màu nút xóa */
+  margin-left: 20px;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.item button:hover {
+  background-color: #e84118; /* Hiệu ứng khi hover nút xóa */
+}
+
+.item p {
+  text-align: center;
+  color: #aaa;
+  font-size: 18px;
+  margin-top: 20px;
+}

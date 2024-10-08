@@ -30,7 +30,7 @@ const Popular = (showLogin) => {
   return (
     <div className={style.carouselContainer}>
       <div>
-        <h1>Phổ Biến</h1>
+        <h1>Phim Phổ Biến</h1>
       </div>
       <div className={style.carousel} ref={carouselRef}>
         {popularMovies.length > 0 ? (

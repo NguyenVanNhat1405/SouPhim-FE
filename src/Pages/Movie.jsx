@@ -46,7 +46,7 @@ const Movie = () => {
         </div>
         <Share movieName={movie.name} />
         <AddFavorite movie={movie} className={style.favoriteIcon} /> {/* Thêm nút yêu thích */}
-        <div className={style.rating}><Rating imdbRating={movie.imdbRating} title={movie.name} movieId={movie.id} /></div>
+        <div className={style.rating}><Rating  movie={movie}  /></div>
       </div>
       <div className={style.date}>
         <p>Phát Hành {movie.release_date} | Thời Lượng {movie.runtime}</p>
@@ -93,7 +93,7 @@ const Movie = () => {
       </div>
 
       <Comment movieId={movie.id} />
-      <Recommendations movieId={movie.id} />
+      <Recommendations movieId={movie.id} title={movie.name}/>
       <WatchHistory/>
     </div>
   );

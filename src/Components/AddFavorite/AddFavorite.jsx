@@ -8,8 +8,8 @@ const AddFavorite = ({ movie }) => {
     const token = localStorage.getItem('token');
     if (token) {
       const storedFavorites = JSON.parse(localStorage.getItem(`favorites_${token}`)) || [];
-      const isItemFavorite = storedFavorites.some(fav => String(fav.itemId) === String(movie.id));
-      setIsFavorite(isItemFavorite);
+      const isMovieFavorite = storedFavorites.some(fav => String(fav.movieId) === String(movie.id));
+      setIsFavorite(isMovieFavorite);
     }
   }, [movie.id]);
 
@@ -31,7 +31,7 @@ const AddFavorite = ({ movie }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          itemId: movie.id,   // Ensure this matches the backend model
+          movieId: movie.id,   // Ensure this matches the backend model
           name: movie.name,
           imageUrl: movie.image,  // Ensure consistency in field names
         }),
@@ -80,12 +80,12 @@ const AddFavorite = ({ movie }) => {
     const storedFavorites = JSON.parse(localStorage.getItem(`favorites_${token}`)) || [];
 
     if (!isFavorite) {
-      const updatedFavorites = [...storedFavorites, { itemId: movie.id, name: movie.name, imageUrl: movie.image }];
+      const updatedFavorites = [...storedFavorites, { movieId: movie.id, name: movie.name, imageUrl: movie.image }];
       localStorage.setItem(`favorites_${token}`, JSON.stringify(updatedFavorites));
       await handleFavorite(movie);
       setIsFavorite(true);
     } else {
-      const updatedFavorites = storedFavorites.filter(fav => fav.itemId !== movie.id);
+      const updatedFavorites = storedFavorites.filter(fav => fav.movieId !== movie.id);
       localStorage.setItem(`favorites_${token}`, JSON.stringify(updatedFavorites));
       await removeFavorite(movie);
       setIsFavorite(false);

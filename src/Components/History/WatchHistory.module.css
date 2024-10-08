@@ -1,4 +1,4 @@
-.img {
+.historyContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,24 +15,12 @@
     /* Đảm bảo phần tử này định vị tương đối */
     
 }
-
-
-
-.Indeximg p span {
-    font-weight: 600;
+.historyContainer h1{
+color: #feca57;
+font-size: 24px;
+font-weight: bold;
 }
-
-
-.title h1{
-    margin: 0px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 60px;
-    color: #feca57;
-}
-.category {
+.historyList{
     justify-content: center;
     display: grid;
     grid-template-columns: 1.2fr 1.2fr 1.2fr 1.2fr;
@@ -40,5 +28,4 @@
     width: 100%;
     /* Mở rộng hết khung chứa */
     max-width: 1200px;
-    
 }

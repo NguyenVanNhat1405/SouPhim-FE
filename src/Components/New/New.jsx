@@ -9,7 +9,7 @@ const New = (showLogin) => {
   return (
     <div>
       <div className={style.newVideo}>
-        <h1>Xu Hướng</h1>
+        <h1>Phim Mới Ra Mắt</h1>
         <div className={style.videos}>
           {Array.isArray(newMovies) && newMovies.length > 0 ? (
           newMovies.map((item, index) => (

@@ -71,7 +71,7 @@ function Navbar({ showLogin, closeLogin, showForm, closeForm }) {
                   <li><Link to="/theloai/drama">Kịch Tính</Link></li>
                   <li><Link to="/theloai/horror">Kinh Dị</Link></li>
                   <li><Link to="/theloai/romance">Ngôn Tình</Link></li>
-                  <li><Link to="/theloai/science">Viễn Tưởng</Link></li>
+                  <li><Link to="/theloai/sci-fi">Viễn Tưởng</Link></li>
                   <li><Link to="/theloai/family">Gia Đình</Link></li>
                   <li><Link to="/theloai/fantasy">Chuyển Thể</Link></li>
                 </ul>

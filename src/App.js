@@ -85,7 +85,7 @@ function App({ user }) {
           <Route path='/theloai/drama' element={<Theloai theloai="Drama" type="movie" til="Kịch Tính" />} />
           <Route path='/theloai/horror' element={<Theloai theloai="Horror"type="movie" til="Kinh Dị" />} />
           <Route path='/theloai/romance' element={<Theloai theloai="Romance" type="movie" til="Ngôn Tình" />} />
-          <Route path='/theloai/science' element={<Theloai theloai="Sci-Fi" type="movie" til="Khoa Học Viễn Tưởng" />} />
+          <Route path='/theloai/sci-fi' element={<Theloai theloai="Sci-Fi" type="movie" til="Khoa Học Viễn Tưởng" />} />
           <Route path='/theloai/family' element={<Theloai theloai="Family" type="movie" til="Gia Đình" />} />
           <Route path='/theloai/fantasy' element={<Theloai theloai="Fantasy" type="movie" til="Chuyển Thể" />} />
           {/* Quốc gia */}
